@@ -1658,6 +1658,811 @@ module Root_unsigned_charP_unsafe
   
 end
 
+theory Axiomatic_Strlen
+
+  use Uint64_of_Int32 
+  
+  use enum.Uint64 
+  
+  use import core.Jessie_voidp 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use import core.Jessie_alloc_table 
+  
+  use enum.Int8 
+  
+  use enum.Int32 
+  
+  use import int.Int 
+  
+  use why3.Bool.Bool 
+  
+  predicate valid_str (s : (pointer voidP)) (voidP_s_2_alloc_table_at_L :
+  (alloc_table voidP)) (charP_charM_s_2_at_L : (memory voidP Int8.t))
+  =
+     (exists n_1 : Uint64.t.
+      (((=)
+       (Int8.to_int
+       (select charP_charM_s_2_at_L (shift s (Uint64.to_int n_1)))) (0))
+      /\
+      (if ((<=) (0) (Uint64.to_int n_1)) then
+       (((<=) (offset_min voidP_s_2_alloc_table_at_L s) (0)) /\
+       (((>=) (offset_max voidP_s_2_alloc_table_at_L s) (Uint64.to_int n_1))
+       /\
+       (forall __framac_tmp1 : int.
+        ((((<=) (0) __framac_tmp1) /\
+         ((<=) __framac_tmp1 (Uint64.to_int n_1))) -> ((=) true true)))))
+       else ((=) true true))))
+  
+  lemma Valid_str_shift1
+  #"/Users/anastasia/Downloads/strcspn/strcspn.c" 11 7 83#
+  "expl:Lemma valid_str_shift1" :
+  (forall voidP_s_0_6_alloc_table_at_L : (alloc_table voidP).
+   (forall charP_charM_s_0_6_at_L : (memory voidP Int8.t).
+    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 11 7 83#
+    (forall s_0_0 : (pointer voidP).
+     ((((<>) (Int8.to_int (select charP_charM_s_0_6_at_L s_0_0)) (0)) /\
+      (valid_str s_0_0 voidP_s_0_6_alloc_table_at_L charP_charM_s_0_6_at_L))
+      ->
+      (valid_str (shift s_0_0 (1)) voidP_s_0_6_alloc_table_at_L
+      charP_charM_s_0_6_at_L))))))
+  
+  function strlen (pointer voidP) (memory voidP Int8.t) :
+  Uint64.t
+  
+  lemma Strlen_before_null
+  #"/Users/anastasia/Downloads/strcspn/strcspn.c" 19 7 106#
+  "expl:Lemma strlen_before_null" :
+  (forall voidP_s_2_7_alloc_table_at_L : (alloc_table voidP).
+   (forall charP_charM_s_2_7_at_L : (memory voidP Int8.t).
+    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 19 7 106#
+    (forall s_2 : (pointer voidP).
+     (forall i_1 : int.
+      (((valid_str s_2 voidP_s_2_7_alloc_table_at_L charP_charM_s_2_7_at_L)
+       /\
+       (((<=) (0) i_1) /\
+       ((<) i_1 (Uint64.to_int (strlen s_2 charP_charM_s_2_7_at_L))))) ->
+       ((<>) (Int8.to_int (select charP_charM_s_2_7_at_L (shift s_2 i_1)))
+       (0))))))))
+  
+  lemma Strlen_at_null
+  #"/Users/anastasia/Downloads/strcspn/strcspn.c" 24 7 71#
+  "expl:Lemma strlen_at_null" :
+  (forall voidP_s_3_8_alloc_table_at_L : (alloc_table voidP).
+   (forall charP_charM_s_3_8_at_L : (memory voidP Int8.t).
+    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 24 7 71#
+    (forall s_3 : (pointer voidP).
+     ((valid_str s_3 voidP_s_3_8_alloc_table_at_L charP_charM_s_3_8_at_L) ->
+      ((=)
+      (Int8.to_int
+      (select charP_charM_s_3_8_at_L
+      (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_3_8_at_L))))) (0)))))))
+  
+  lemma Strlen_shift
+  #"/Users/anastasia/Downloads/strcspn/strcspn.c" 28 7 125#
+  "expl:Lemma strlen_shift" :
+  (forall voidP_s_4_9_alloc_table_at_L : (alloc_table voidP).
+   (forall charP_charM_s_4_9_at_L : (memory voidP Int8.t).
+    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 28 7 125#
+    (forall s_4 : (pointer voidP).
+     (forall i_2 : Uint64.t.
+      (((valid_str s_4 voidP_s_4_9_alloc_table_at_L charP_charM_s_4_9_at_L)
+       /\ (Uint64.(<=) i_2 (strlen s_4 charP_charM_s_4_9_at_L))) ->
+       ((=)
+       (Uint64.to_int
+       (strlen (shift s_4 (Uint64.to_int i_2)) charP_charM_s_4_9_at_L))
+       (Int.(-) (Uint64.to_int (strlen s_4 charP_charM_s_4_9_at_L))
+       (Uint64.to_int i_2)))))))))
+  
+  lemma Strlen_shift_ex
+  #"/Users/anastasia/Downloads/strcspn/strcspn.c" 34 7 126#
+  "expl:Lemma strlen_shift_ex" :
+  (forall voidP_s_5_10_alloc_table_at_L : (alloc_table voidP).
+   (forall charP_charM_s_5_10_at_L : (memory voidP Int8.t).
+    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 34 7 126#
+    (forall s_5 : (pointer voidP).
+     (forall i_3 : Uint64.t.
+      (((valid_str s_5 voidP_s_5_10_alloc_table_at_L charP_charM_s_5_10_at_L)
+       /\
+       (((<) (0) (Uint64.to_int i_3)) /\
+       (Uint64.(<=) i_3 (strlen s_5 charP_charM_s_5_10_at_L)))) ->
+       (Uint64.(<)
+       (strlen (shift s_5 (Uint64.to_int i_3)) charP_charM_s_5_10_at_L)
+       (strlen s_5 charP_charM_s_5_10_at_L))))))))
+  
+  lemma Strlen_shift1
+  #"/Users/anastasia/Downloads/strcspn/strcspn.c" 40 7 103#
+  "expl:Lemma strlen_shift1" :
+  (forall voidP_s_6_11_alloc_table_at_L : (alloc_table voidP).
+   (forall charP_charM_s_6_11_at_L : (memory voidP Int8.t).
+    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 40 7 103#
+    (forall s_6 : (pointer voidP).
+     (((valid_str s_6 voidP_s_6_11_alloc_table_at_L charP_charM_s_6_11_at_L)
+      /\ ((<>) (Int8.to_int (select charP_charM_s_6_11_at_L s_6)) (0))) ->
+      ((=) (Uint64.to_int (strlen s_6 charP_charM_s_6_11_at_L))
+      (Int.(+) (1)
+      (Uint64.to_int (strlen (shift s_6 (1)) charP_charM_s_6_11_at_L)))))))))
+  
+  lemma Strlen_pointers
+  #"/Users/anastasia/Downloads/strcspn/strcspn.c" 45 7 253#
+  "expl:Lemma strlen_pointers" :
+  (forall voidP_s_7_12_alloc_table_at_L : (alloc_table voidP).
+   (forall charP_charM_s_7_12_at_L : (memory voidP Int8.t).
+    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 45 7 253#
+    (forall s_7 : (pointer voidP).
+     (forall sc : (pointer voidP).
+      (((valid_str s_7 voidP_s_7_12_alloc_table_at_L charP_charM_s_7_12_at_L)
+       /\
+       ((valid_str sc voidP_s_7_12_alloc_table_at_L charP_charM_s_7_12_at_L)
+       /\
+       ((same_block s_7 sc) /\
+       (((<=) (sub_pointer s_7 sc) (0)) /\
+       (forall i_4 : int.
+        ((((<=) (0) i_4) /\ ((<=) i_4 (sub_pointer sc s_7))) ->
+         ((<>) (Int8.to_int (select charP_charM_s_7_12_at_L (shift s_7 i_4)))
+         (0)))))))) ->
+       (Uint64.(<=) (strlen sc charP_charM_s_7_12_at_L)
+       (strlen s_7 charP_charM_s_7_12_at_L))))))))
+  
+  lemma Strlen_main #"/Users/anastasia/Downloads/strcspn/strcspn.c" 54 7 159#
+  "expl:Lemma strlen_main" :
+  (forall voidP_s_8_14_alloc_table_at_L : (alloc_table voidP).
+   (forall charP_charM_s_8_14_at_L : (memory voidP Int8.t).
+    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 54 7 159#
+    (forall s_8 : (pointer voidP).
+     (forall n_2 : Uint64.t.
+      (((valid_str s_8 voidP_s_8_14_alloc_table_at_L charP_charM_s_8_14_at_L)
+       /\
+       (((=)
+        (Int8.to_int
+        (select charP_charM_s_8_14_at_L (shift s_8 (Uint64.to_int n_2))))
+        (0))
+       /\
+       (forall i_5 : Uint64.t.
+        ((Uint64.(<) i_5 n_2) ->
+         ((<>)
+         (Int8.to_int
+         (select charP_charM_s_8_14_at_L (shift s_8 (Uint64.to_int i_5))))
+         (0)))))) -> (Uint64.(=) (strlen s_8 charP_charM_s_8_14_at_L) n_2)))))))
+  
+  axiom Strlen_definition :
+  (forall s_1 : (pointer voidP).
+   (forall charP_charM_s_1_3_at_L : (memory voidP Int8.t)
+    [(strlen s_1 charP_charM_s_1_3_at_L)] .
+    ((=) (strlen s_1 charP_charM_s_1_3_at_L)
+    (if
+     ((=) (Int8.to_int (select charP_charM_s_1_3_at_L (shift s_1 (0)))) (0))
+     then (#"strcspn.jc" 45 51 75# "expl:Integer cast"
+     (Uint64_of_Int32.cast (#"strcspn.jc" 45 52 64# "expl:Integer cast"
+     (Int32.of_int (0))))) else (#"strcspn.jc" 45 81 183# "expl:Integer cast"
+     (Uint64.of_int
+     (Int.(+)
+     (Uint64.to_int (#"strcspn.jc" 46 8 32# "expl:Integer cast"
+     (Uint64_of_Int32.cast (#"strcspn.jc" 46 9 21# "expl:Integer cast"
+     (Int32.of_int (1))))))
+     (Uint64.to_int (strlen (shift s_1 (1)) charP_charM_s_1_3_at_L)))))))))
+  
+end
+
+module Safe_int32_of_Safe_int8
+
+  use enum.Int8 
+  
+  use enum.Int32 
+  
+  use why3.Bool.Bool 
+  
+  val cast
+  (n : Int8.t) : Int32.t
+   requires { true } ensures { ((=) (Int32.to_int result) (Int8.to_int n)) }
+  
+end
+
+module Exceptions
+
+  use why3.Bool.Bool 
+  
+  exception Goto_while_0_break_exc unit
+  
+  exception Goto_while_1_break_exc unit
+  
+  exception Loop_continue_exc unit
+  
+  exception Loop_exit_exc unit
+  
+  exception Return_label_exc unit
+  
+end
+
+module Function_strcspn_safety
+
+  use enum.Uint64 
+  
+  use Safe_uint64 
+  
+  use Safe_int32_of_Safe_int8 
+  
+  use Safe_int32 
+  
+  use import ref.Ref 
+  
+  use import core.Jessie_voidp 
+  
+  use import core.Jessie_tag_table_type 
+  
+  use import core.Jessie_shift_safe 
+  
+  use import core.Jessie_return 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use import core.Jessie_charp_tag_id 
+  
+  use import core.Jessie_any_pointer 
+  
+  use import core.Jessie_allocable 
+  
+  use import core.Jessie_alloc_table 
+  
+  use import core.Jessie_acc_safe 
+  
+  use enum.Int8 
+  
+  use import int.Int 
+  
+  use import Exceptions 
+  
+  use import Axiomatic_Strlen 
+  
+  use why3.Bool.Bool 
+  
+  let strcspn #"/Users/anastasia/Downloads/strcspn/strcspn.c" 66 7 49#
+  "expl:Function strcspn, safety" =
+  fun
+   (s_0 : (pointer voidP)) (reject : (pointer voidP)) (voidP_s_4_alloc_table
+   : (alloc_table voidP)) (voidP_reject_5_alloc_table : (alloc_table voidP))
+   (voidP_reject_5_tag_table : (tag_table voidP)) (voidP_s_4_tag_table :
+   (tag_table voidP)) (charP_charM_s_4 : (memory voidP Int8.t))
+   (charP_charM_reject_5 : (memory voidP Int8.t)) 
+   requires {
+   (((allocated voidP_reject_5_alloc_table reject) ->
+     (((=) (typeof voidP_reject_5_tag_table reject) charP_tag) /\
+     (forall i : int.
+      ((((<=) (offset_min voidP_reject_5_alloc_table reject) i) /\
+       ((<) i (offset_max voidP_reject_5_alloc_table reject))) ->
+       ((=) (typeof voidP_reject_5_tag_table (shift reject i)) charP_tag)))))
+   /\
+   (((allocated voidP_s_4_alloc_table s_0) ->
+     (((=) (typeof voidP_s_4_tag_table s_0) charP_tag) /\
+     (forall i : int.
+      ((((<=) (offset_min voidP_s_4_alloc_table s_0) i) /\
+       ((<) i (offset_max voidP_s_4_alloc_table s_0))) ->
+       ((=) (typeof voidP_s_4_tag_table (shift s_0 i)) charP_tag)))))
+   /\
+   (#"strcspn.jc" 105 12 90#
+   ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 62 10 22#
+    (valid_str s_0 voidP_s_4_alloc_table charP_charM_s_4))
+   /\
+   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 63 13 30#
+   (valid_str reject voidP_reject_5_alloc_table charP_charM_reject_5)))))) }
+   ensures { ("expl:Postcondition" true) }  ->
+   'Init:
+   (let return = ref (Safe_uint64.any_  () ) in
+   try
+    begin
+    (let p = ref (any_pointer  () : (pointer voidP)) in
+    (let r = ref (any_pointer  () : (pointer voidP)) in
+    (let count = ref (Safe_uint64.any_  () ) in
+    (let __retres = ref (Safe_uint64.any_  () ) in
+    try
+     begin
+     try
+      begin
+      (count :=
+       (let _jessie_23 =
+       (#"strcspn.jc" 119 23 36# "expl:Integer cast"
+       (Safe_uint64.of_int (0))) in
+       begin
+       (assert {
+       (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 70 1 7#
+       "expl:Pointer index bounds" true) }); _jessie_23 end));
+       begin
+       (p :=
+        (let _jessie_17 = s_0 in
+        begin
+        (assert {
+        (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 80 6 11#
+        "expl:Pointer index bounds" true) }); _jessie_17 end));
+        'Loop_3:
+        loop
+        invariant { (#"strcspn.jc" 122 6 3865# true) }
+          variant {
+            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 78 19 38#
+            (Int.(-) (Uint64.to_int (strlen s_0 charP_charM_s_4))
+            (sub_pointer !p s_0))) }
+         begin
+         any unit
+         requires { true } reads { s_0 }
+         ensures {
+           ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 76 21 53#
+            ((=) (Uint64.to_int (strlen s_0 charP_charM_s_4))
+            (Int.(+) (Uint64.to_int (strlen !p charP_charM_s_4))
+            (sub_pointer !p s_0))))
+           /\
+           ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 75 21 44#
+            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 75 21 44#
+            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 75 21 27#
+             ((<=) (sub_pointer s_0 !p) (0)))
+            /\
+            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 75 26 44#
+            ((<=)
+            (sub_pointer !p
+            (shift s_0 (Uint64.to_int (strlen s_0 charP_charM_s_4)))) (0))))))
+           /\
+           ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 74 18 32#
+            ((=) (Uint64.to_int !count) (sub_pointer !p s_0)))
+           /\
+           ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 73 21 44#
+            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 73 21 44#
+            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 73 21 31#
+             ((<=) (0) (Uint64.to_int !count)))
+            /\
+            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 73 26 44#
+            (Uint64.(<=) !count (strlen s_0 charP_charM_s_4))))))
+           /\
+           ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 72 20 32#
+            (valid_str !p voidP_s_4_alloc_table charP_charM_s_4))
+           /\
+           (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 71 16 46#
+           (same_block s_0 !p))))))) } ;
+          try
+           begin
+           begin
+           (if
+           (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 80 13 23#
+           (Safe_int32.(<>) 
+            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 80 13 15#
+            "expl:Integer cast"
+            (Safe_int32_of_Safe_int8.cast 
+             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 80 13 15#
+             "expl:Pointer dereference"
+             (acc  voidP_s_4_alloc_table charP_charM_s_4 !p )) ))
+            (#"strcspn.jc" 149 27 39# "expl:Integer cast"
+            (Safe_int32.of_int (0))) )) then ()
+           else (raise (Goto_while_0_break_exc ())));
+            try
+             begin
+             (r :=
+              (let _jessie_18 = reject in
+              begin
+              (assert {
+              (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 87 7 17#
+              "expl:Pointer index bounds" true) }); _jessie_18 end));
+              'Loop_4:
+              loop
+              invariant { (#"strcspn.jc" 154 15 2058# true) }
+                variant {
+                  (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 85 21 50#
+                  (Int.(-)
+                  (Uint64.to_int (strlen reject charP_charM_reject_5))
+                  (sub_pointer !r reject))) }
+               begin
+               any unit
+               requires { true } reads { reject }
+               ensures {
+                 ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 84 19 61#
+                  ((=) (Uint64.to_int (strlen reject charP_charM_reject_5))
+                  (Int.(+) (Uint64.to_int (strlen !r charP_charM_reject_5))
+                  (sub_pointer !r reject))))
+                 /\
+                 ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 83 19 57#
+                  (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 83 19 57#
+                  ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 83 19 30#
+                   ((<=) (sub_pointer reject !r) (0)))
+                  /\
+                  (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 83 29 57#
+                  ((<=)
+                  (sub_pointer !r
+                  (shift reject
+                  (Uint64.to_int (strlen reject charP_charM_reject_5)))) (0))))))
+                 /\
+                 ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 82 19 31#
+                  (valid_str !r voidP_reject_5_alloc_table
+                  charP_charM_reject_5))
+                 /\
+                 (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 81 16 51#
+                 (same_block reject !r))))) } ;
+                try
+                 begin
+                 begin
+                 (if
+                 (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 87 19 29#
+                 (Safe_int32.(<>) 
+                  (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 87 19 21#
+                  "expl:Integer cast"
+                  (Safe_int32_of_Safe_int8.cast 
+                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 87 19 21#
+                   "expl:Pointer dereference"
+                   (acc  voidP_reject_5_alloc_table charP_charM_reject_5 !r ))
+                   ))
+                  (#"strcspn.jc" 174 36 48# "expl:Integer cast"
+                  (Safe_int32.of_int (0))) )) then ()
+                 else (raise (Goto_while_1_break_exc ())));
+                  (if
+                  (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 88 7 15#
+                  (Safe_int32.(=) 
+                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 88 7 9#
+                   "expl:Integer cast"
+                   (Safe_int32_of_Safe_int8.cast 
+                    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 88 7 9#
+                    "expl:Pointer dereference"
+                    (acc  voidP_s_4_alloc_table charP_charM_s_4 !p )) ))
+                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 88 13 15#
+                   "expl:Integer cast"
+                   (Safe_int32_of_Safe_int8.cast 
+                    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 88 13 15#
+                    "expl:Pointer dereference"
+                    (acc  voidP_reject_5_alloc_table charP_charM_reject_5 !r
+                     )) )) ))
+                  then
+                   begin
+                   begin
+                   any unit
+                   requires { true }
+                   ensures {
+                     (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 89 8 16#
+                     (Int8.(=) (select charP_charM_s_4 !p)
+                     (select charP_charM_reject_5 !r))) } ; () end;
+                    begin
+                    (__retres :=
+                     (let _jessie_19 = !count in
+                     begin
+                     (assert {
+                     (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 90 4 17#
+                     "expl:Pointer index bounds" true) }); _jessie_19 end));
+                     (raise (Return_label_exc ())) end end else ());
+                  (r :=
+                   (let _jessie_20 =
+                   (shift_typesafe  !r
+                    (Safe_int32.to_int 
+                     (#"strcspn.jc" 193 49 61# "expl:Integer cast"
+                     (Safe_int32.of_int (1))) ) ) in
+                   begin
+                   (assert {
+                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 87 31 34#
+                   "expl:Pointer index bounds" true) }); _jessie_20 end)) end;
+                  (raise (Loop_continue_exc ())) end with Loop_continue_exc
+                 _jessie_5 -> () end end end;
+              (raise (Goto_while_1_break_exc ())) end with
+             Goto_while_1_break_exc _jessie_1 ->
+             'While_1_break:
+             'While_1_break:
+             begin
+             ();
+              'Before:
+              begin
+              'Before: ();
+               begin
+               (count :=
+                (let _jessie_21 =
+                (Safe_uint64.(+)  !count
+                 (#"strcspn.jc" 198 61 74# "expl:Integer cast"
+                 (Safe_uint64.of_int (1))) ) in
+                begin
+                (assert {
+                (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 93 2 9#
+                "expl:Pointer index bounds" true) }); _jessie_21 end));
+                begin
+                any unit
+                requires { true }
+                ensures {
+                  (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 94 8 50#
+                  ((=) (Int.(+) (Uint64.to_int (at !count 'Before)) (1))
+                  (Uint64.to_int !count))) } ; () end end end end end;
+            (p :=
+             (let _jessie_22 =
+             (shift_typesafe  !p
+              (Safe_int32.to_int 
+               (#"strcspn.jc" 207 40 52# "expl:Integer cast"
+               (Safe_int32.of_int (1))) ) ) in
+             begin
+             (assert {
+             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 80 25 28#
+             "expl:Pointer index bounds" true) }); _jessie_22 end)) end;
+            (raise (Loop_continue_exc ())) end with Loop_continue_exc
+           _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
+       end end with Goto_while_0_break_exc _jessie_2 ->
+      'While_0_break:
+      'While_0_break:
+      begin
+      ();
+       (__retres :=
+        (let _jessie_24 = !count in
+        begin
+        (assert {
+        (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 96 1 14#
+        "expl:Pointer index bounds" true) }); _jessie_24 end)) end end;
+      (raise (Return_label_exc ())) end with Return_label_exc _jessie_3 ->
+     'Return_label:
+     'Return_label:
+     begin
+     (return :=
+      (let _jessie_25 = !__retres in
+      begin
+      (assert { (#"strcspn.jc" 213 7 22# "expl:Pointer index bounds" true) });
+       _jessie_25 end)); (raise Return) end end)))); absurd  end with Return
+    -> !return end)
+  
+end
+
+module Unsafe_int32_of_Unsafe_int8
+
+  use enum.Int8 
+  
+  use enum.Int32 
+  
+  use why3.Bool.Bool 
+  
+  val cast
+  (n : Int8.t) : Int32.t
+   requires { true } ensures { ((=) (Int32.to_int result) (Int8.to_int n)) }
+  
+end
+
+module Function_strcspn_behaviors
+
+  use Unsafe_uint64 
+  
+  use Unsafe_int32_of_Unsafe_int8 
+  
+  use Unsafe_int32 
+  
+  use enum.Uint64 
+  
+  use import ref.Ref 
+  
+  use import core.Jessie_voidp 
+  
+  use import core.Jessie_tag_table_type 
+  
+  use import core.Jessie_shift_unsafe 
+  
+  use import core.Jessie_return 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use import core.Jessie_charp_tag_id 
+  
+  use import core.Jessie_any_pointer 
+  
+  use import core.Jessie_allocable 
+  
+  use import core.Jessie_alloc_table 
+  
+  use import core.Jessie_acc_unsafe 
+  
+  use enum.Int8 
+  
+  use import int.Int 
+  
+  use import Exceptions 
+  
+  use import Axiomatic_Strlen 
+  
+  use why3.Bool.Bool 
+  
+  let strcspn_ensures_default
+  #"/Users/anastasia/Downloads/strcspn/strcspn.c" 66 7 49#
+  "expl:Function strcspn, default behavior" =
+  fun
+   (s_0 : (pointer voidP)) (reject : (pointer voidP)) (voidP_s_4_alloc_table
+   : (alloc_table voidP)) (voidP_reject_5_alloc_table : (alloc_table voidP))
+   (voidP_reject_5_tag_table : (tag_table voidP)) (voidP_s_4_tag_table :
+   (tag_table voidP)) (charP_charM_s_4 : (memory voidP Int8.t))
+   (charP_charM_reject_5 : (memory voidP Int8.t)) 
+   requires {
+   (((allocated voidP_reject_5_alloc_table reject) ->
+     (((=) (typeof voidP_reject_5_tag_table reject) charP_tag) /\
+     (forall i : int.
+      ((((<=) (offset_min voidP_reject_5_alloc_table reject) i) /\
+       ((<) i (offset_max voidP_reject_5_alloc_table reject))) ->
+       ((=) (typeof voidP_reject_5_tag_table (shift reject i)) charP_tag)))))
+   /\
+   (((allocated voidP_s_4_alloc_table s_0) ->
+     (((=) (typeof voidP_s_4_tag_table s_0) charP_tag) /\
+     (forall i : int.
+      ((((<=) (offset_min voidP_s_4_alloc_table s_0) i) /\
+       ((<) i (offset_max voidP_s_4_alloc_table s_0))) ->
+       ((=) (typeof voidP_s_4_tag_table (shift s_0 i)) charP_tag)))))
+   /\
+   (#"strcspn.jc" 105 12 90#
+   ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 62 10 22#
+    (valid_str s_0 voidP_s_4_alloc_table charP_charM_s_4))
+   /\
+   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 63 13 30#
+   (valid_str reject voidP_reject_5_alloc_table charP_charM_reject_5)))))) }
+   ensures { ("expl:Postcondition" ("expl:Ensures clause" true)) } diverges 
+   ->
+   'Init:
+   (let return = ref (Unsafe_uint64.any_  () ) in
+   try
+    begin
+    (let p = ref (any_pointer  () : (pointer voidP)) in
+    (let r = ref (any_pointer  () : (pointer voidP)) in
+    (let count = ref (Unsafe_uint64.any_  () ) in
+    (let __retres = ref (Unsafe_uint64.any_  () ) in
+    try
+     begin
+     try
+      begin
+      (count :=
+       (#"strcspn.jc" 119 23 36# "expl:Integer cast"
+       (Unsafe_uint64.of_int (0))));
+       begin
+       (p := s_0);
+        'Loop_1:
+        loop
+        invariant
+          { ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 71 16 46#
+             (same_block s_0 !p))
+            &&
+            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 72 20 32#
+             (valid_str !p voidP_s_4_alloc_table charP_charM_s_4))
+            &&
+            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 73 21 44#
+             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 73 21 44#
+             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 73 21 31#
+              ((<=) (0) (Uint64.to_int !count)))
+             /\
+             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 73 26 44#
+             (Uint64.(<=) !count (strlen s_0 charP_charM_s_4))))))
+            &&
+            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 74 18 32#
+             ((=) (Uint64.to_int !count) (sub_pointer !p s_0)))
+            &&
+            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 75 21 44#
+             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 75 21 44#
+             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 75 21 27#
+              ((<=) (sub_pointer s_0 !p) (0)))
+             /\
+             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 75 26 44#
+             ((<=)
+             (sub_pointer !p
+             (shift s_0 (Uint64.to_int (strlen s_0 charP_charM_s_4)))) (0))))))
+            &&
+            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 76 21 53#
+            ((=) (Uint64.to_int (strlen s_0 charP_charM_s_4))
+            (Int.(+) (Uint64.to_int (strlen !p charP_charM_s_4))
+            (sub_pointer !p s_0))))))))) } 
+         begin
+         any unit requires { true } ensures { true } ;
+          try
+           begin
+           begin
+           (if
+           (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 80 13 23#
+           (Unsafe_int32.(<>) 
+            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 80 13 15#
+            "expl:Integer cast"
+            (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_s_4 !p ) ))
+            (#"strcspn.jc" 149 27 39# "expl:Integer cast"
+            (Unsafe_int32.of_int (0))) )) then ()
+           else (raise (Goto_while_0_break_exc ())));
+            try
+             begin
+             (r := reject);
+              'Loop_2:
+              loop
+              invariant
+                { ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 81 16 51#
+                   (same_block reject !r))
+                  &&
+                  ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 82 19 31#
+                   (valid_str !r voidP_reject_5_alloc_table
+                   charP_charM_reject_5))
+                  &&
+                  ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 83 19 57#
+                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 83 19 57#
+                   ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 83 19 30#
+                    ((<=) (sub_pointer reject !r) (0)))
+                   /\
+                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 83 29 57#
+                   ((<=)
+                   (sub_pointer !r
+                   (shift reject
+                   (Uint64.to_int (strlen reject charP_charM_reject_5))))
+                   (0))))))
+                  &&
+                  (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 84 19 61#
+                  ((=) (Uint64.to_int (strlen reject charP_charM_reject_5))
+                  (Int.(+) (Uint64.to_int (strlen !r charP_charM_reject_5))
+                  (sub_pointer !r reject))))))) } 
+               begin
+               any unit requires { true } ensures { true } ;
+                try
+                 begin
+                 begin
+                 (if
+                 (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 87 19 29#
+                 (Unsafe_int32.(<>) 
+                  (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 87 19 21#
+                  "expl:Integer cast"
+                  (Unsafe_int32_of_Unsafe_int8.cast 
+                   (acc  charP_charM_reject_5 !r ) ))
+                  (#"strcspn.jc" 174 36 48# "expl:Integer cast"
+                  (Unsafe_int32.of_int (0))) )) then ()
+                 else (raise (Goto_while_1_break_exc ())));
+                  (if
+                  (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 88 7 15#
+                  (Unsafe_int32.(=) 
+                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 88 7 9#
+                   "expl:Integer cast"
+                   (Unsafe_int32_of_Unsafe_int8.cast 
+                    (acc  charP_charM_s_4 !p ) ))
+                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 88 13 15#
+                   "expl:Integer cast"
+                   (Unsafe_int32_of_Unsafe_int8.cast 
+                    (acc  charP_charM_reject_5 !r ) )) ))
+                  then
+                   begin
+                   begin
+                   (assert {
+                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 89 8 16#
+                   "expl:Assertion in line 89"
+                   (Int8.(=) (select charP_charM_s_4 !p)
+                   (select charP_charM_reject_5 !r))) }); () end;
+                    begin (__retres := !count); (raise (Return_label_exc ()))
+                    end end else ());
+                  (r :=
+                   (shift_  !r
+                    (Unsafe_int32.to_int 
+                     (#"strcspn.jc" 193 49 61# "expl:Integer cast"
+                     (Unsafe_int32.of_int (1))) ) )) end;
+                  (raise (Loop_continue_exc ())) end with Loop_continue_exc
+                 _jessie_5 -> () end end end;
+              (raise (Goto_while_1_break_exc ())) end with
+             Goto_while_1_break_exc _jessie_1 ->
+             'While_1_break:
+             'While_1_break:
+             begin
+             ();
+              'Before:
+              begin
+              'Before: ();
+               begin
+               (count :=
+                (Unsafe_uint64.(+)  !count
+                 (#"strcspn.jc" 198 61 74# "expl:Integer cast"
+                 (Unsafe_uint64.of_int (1))) ));
+                begin
+                (assert {
+                (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 94 8 50#
+                "expl:Assertion in line 94"
+                ((=) (Int.(+) (Uint64.to_int (at !count 'Before)) (1))
+                (Uint64.to_int !count))) }); () end end end end end;
+            (p :=
+             (shift_  !p
+              (Unsafe_int32.to_int 
+               (#"strcspn.jc" 207 40 52# "expl:Integer cast"
+               (Unsafe_int32.of_int (1))) ) )) end;
+            (raise (Loop_continue_exc ())) end with Loop_continue_exc
+           _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
+       end end with Goto_while_0_break_exc _jessie_2 ->
+      'While_0_break: 'While_0_break: begin (); (__retres := !count) end end;
+      (raise (Return_label_exc ())) end with Return_label_exc _jessie_3 ->
+     'Return_label:
+     'Return_label: begin (return := !__retres); (raise Return) end end))));
+     absurd  end with Return -> !return end)
+  
+end
+
 theory Logic_type_padding
 
   use why3.Bool.Bool 
@@ -2398,18 +3203,6 @@ module Struct_voidP_safe
       ((fresh_tag_struct_voidP result (old !voidP_tag_table)) /\
       ((typeof_singleton_struct_voidP result !voidP_tag_table) /\
       (container_of_singleton_struct_voidP result !voidP_tag_table))))))) }
-  
-end
-
-module Exceptions
-
-  use why3.Bool.Bool 
-  
-  exception Loop_continue_exc unit
-  
-  exception Loop_exit_exc unit
-  
-  exception Return_label_exc unit
   
 end
 
@@ -4458,34 +5251,6 @@ module Unsafe_bit_int32_of_Unsafe_bit_int8
    ensures {
      (((=) (Int32.to_int result) (Int8.to_int n)) /\
      ((=) result (Bit_int32_of_Bit_int8.cast_modulo n))) }
-  
-end
-
-module Safe_int32_of_Safe_int8
-
-  use enum.Int8 
-  
-  use enum.Int32 
-  
-  use why3.Bool.Bool 
-  
-  val cast
-  (n : Int8.t) : Int32.t
-   requires { true } ensures { ((=) (Int32.to_int result) (Int8.to_int n)) }
-  
-end
-
-module Unsafe_int32_of_Unsafe_int8
-
-  use enum.Int8 
-  
-  use enum.Int32 
-  
-  use why3.Bool.Bool 
-  
-  val cast
-  (n : Int8.t) : Int32.t
-   requires { true } ensures { ((=) (Int32.to_int result) (Int8.to_int n)) }
   
 end
 
@@ -7267,5 +8032,80 @@ module Unsafe_int32_of_Unsafe_int16
   val cast
   (n : Int16.t) : Int32.t
    requires { true } ensures { ((=) (Int32.to_int result) (Int16.to_int n)) }
+  
+end
+
+module Function_strcspn
+
+  use enum.Uint64 
+  
+  use import core.Jessie_voidp 
+  
+  use import core.Jessie_tag_table_type 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use import core.Jessie_alloc_table 
+  
+  use enum.Int8 
+  
+  use why3.Bool.Bool 
+  
+  val strcspn
+  (s_0 : (pointer voidP)) 
+   (reject : (pointer voidP)) 
+    (voidP_reject_5_alloc_table : (alloc_table voidP)) 
+     (voidP_s_4_alloc_table : (alloc_table voidP)) 
+      (voidP_reject_5_tag_table : (tag_table voidP)) 
+       (voidP_s_4_tag_table : (tag_table voidP)) 
+        (charP_charM_reject_5 : (memory voidP Int8.t)) 
+         (charP_charM_s_4 : (memory voidP Int8.t)) : Uint64.t
+          requires { true } ensures { true }
+  
+end
+
+module Function_strcspn_safe
+
+  use enum.Uint64 
+  
+  use import core.Jessie_voidp 
+  
+  use import core.Jessie_tag_table_type 
+  
+  use import core.Jessie_pointer 
+  
+  use import core.Jessie_memory 
+  
+  use import core.Jessie_alloc_table 
+  
+  use enum.Int8 
+  
+  use import Axiomatic_Strlen 
+  
+  use why3.Bool.Bool 
+  
+  val strcspn
+  (s_0 : (pointer voidP)) 
+   (reject : (pointer voidP)) 
+    (voidP_reject_5_alloc_table : (alloc_table voidP)) 
+     (voidP_s_4_alloc_table : (alloc_table voidP)) 
+      (voidP_reject_5_tag_table : (tag_table voidP)) 
+       (voidP_s_4_tag_table : (tag_table voidP)) 
+        (charP_charM_reject_5 : (memory voidP Int8.t)) 
+         (charP_charM_s_4 : (memory voidP Int8.t)) : Uint64.t
+          requires {
+            ("expl:Internal"
+            (#"strcspn.jc" 105 12 90# "expl:Requires clause"
+            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 62 10 22#
+             "expl:Requires clause"
+             (valid_str s_0 voidP_s_4_alloc_table charP_charM_s_4))
+            /\
+            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 63 13 30#
+            "expl:Requires clause"
+            (valid_str reject voidP_reject_5_alloc_table
+            charP_charM_reject_5))))) }
+          ensures { true }
   
 end

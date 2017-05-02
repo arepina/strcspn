@@ -19,3 +19,197 @@ tag unsigned_charP = {
 }
 
 type unsigned_charP = [unsigned_charP]
+
+axiomatic Strlen {
+
+  predicate valid_str{L}(charP[..] s) =
+  \at((\exists uint64 n_1;
+        ((((s + (n_1 :> integer)).charM :> integer) == 0) &&
+          \at((if (\at(0,L) <= \at(n_1,L)) then (((\offset_min(\at(s,L)) <=
+                                                    \at(0,L)) &&
+                                                   (\offset_max(\at(s,L)) >=
+                                                     \at(n_1,L))) &&
+                                                  (\forall integer __framac_tmp1;
+                                                    (((\at(0,L) <=
+                                                        __framac_tmp1) &&
+                                                       (__framac_tmp1 <=
+                                                         \at(n_1,L))) ==>
+                                                      true))) else true),L))),L)
+   
+  lemma valid_str_shift1{L} :
+  (_C_1 : (\forall charP[..] s_0;
+            ((((s_0.charM :> integer) != 0) && valid_str{L}(s_0)) ==>
+              valid_str{L}((s_0 + 1)))))
+   
+  logic uint64 strlen{L}(charP[..] s_1) =
+  \at((if (((s_1 + 0).charM :> integer) == 0) then ((0 :> int32) :> uint64) else (
+      ((((1 :> int32) :> uint64) :> integer) +
+        (strlen{L}((s_1 + 1)) :> integer)) :> uint64)),L)
+   
+  lemma strlen_before_null{L} :
+  (_C_2 : (\forall charP[..] s_2;
+            (\forall integer i_1;
+              (((valid_str{L}(s_2) && (0 <= i_1)) &&
+                 (i_1 < (strlen{L}(s_2) :> integer))) ==>
+                (((s_2 + i_1).charM :> integer) != 0)))))
+   
+  lemma strlen_at_null{L} :
+  (_C_3 : (\forall charP[..] s_3;
+            (valid_str{L}(s_3) ==>
+              (((s_3 + (strlen{L}(s_3) :> integer)).charM :> integer) == 0))))
+   
+  lemma strlen_shift{L} :
+  (_C_4 : (\forall charP[..] s_4;
+            (\forall uint64 i_2;
+              ((valid_str{L}(s_4) && (i_2 <= strlen{L}(s_4))) ==>
+                ((strlen{L}((s_4 + (i_2 :> integer))) :> integer) ==
+                  ((strlen{L}(s_4) :> integer) - (i_2 :> integer)))))))
+   
+  lemma strlen_shift_ex{L} :
+  (_C_5 : (\forall charP[..] s_5;
+            (\forall uint64 i_3;
+              (((valid_str{L}(s_5) && (0 < (i_3 :> integer))) &&
+                 (i_3 <= strlen{L}(s_5))) ==>
+                (strlen{L}((s_5 + (i_3 :> integer))) < strlen{L}(s_5))))))
+   
+  lemma strlen_shift1{L} :
+  (_C_6 : (\forall charP[..] s_6;
+            ((valid_str{L}(s_6) && ((s_6.charM :> integer) != 0)) ==>
+              ((strlen{L}(s_6) :> integer) ==
+                (1 + (strlen{L}((s_6 + 1)) :> integer))))))
+   
+  lemma strlen_pointers{L} :
+  (_C_7 : (\forall charP[..] s_7;
+            (\forall charP[..] sc;
+              (((((valid_str{L}(s_7) && valid_str{L}(sc)) &&
+                   (\base_block(s_7) == \base_block(sc))) &&
+                  ((s_7 - sc) <= 0)) &&
+                 (\forall integer i_4;
+                   (((0 <= i_4) && (i_4 <= (sc - s_7))) ==>
+                     (((s_7 + i_4).charM :> integer) != 0)))) ==>
+                (strlen{L}(sc) <= strlen{L}(s_7))))))
+   
+  lemma strlen_main{L} :
+  (_C_8 : (\forall charP[..] s_8;
+            (\forall uint64 n_2;
+              (((valid_str{L}(s_8) &&
+                  (((s_8 + (n_2 :> integer)).charM :> integer) == 0)) &&
+                 (\forall uint64 i_5;
+                   ((i_5 < n_2) ==>
+                     (((s_8 + (i_5 :> integer)).charM :> integer) != 0)))) ==>
+                (strlen{L}(s_8) == n_2)))))
+  
+}
+
+uint64 strcspn(charP[..] s, charP[..] reject)
+  requires ((_C_52 : valid_str{Here}(s)) &&
+             (_C_53 : valid_str{Here}(reject)));
+behavior default:
+  assigns \nothing;
+  ensures true;
+{  
+   (var charP[..] p);
+   
+   (var charP[..] r);
+   
+   (var uint64 count);
+   
+   (var uint64 __retres);
+   
+   {  (_C_9 : (count = (0 :> uint64)));
+      (_C_10 : (p = s));
+      
+      loop 
+      behavior default:
+        invariant (_C_21 : (\base_block(s) == \base_block(p)));
+      behavior default:
+        invariant (_C_20 : valid_str{Here}(p));
+      behavior default:
+        invariant (_C_17 : ((_C_18 : (0 <= (count :> integer))) &&
+                             (_C_19 : (count <= strlen{Here}(s)))));
+      behavior default:
+        invariant (_C_16 : ((count :> integer) == (p - s)));
+      behavior default:
+        invariant (_C_13 : ((_C_14 : ((s - p) <= 0)) &&
+                             (_C_15 : ((p -
+                                         (s + (strlen{Here}(s) :> integer))) <=
+                                        0))));
+      behavior default:
+        invariant (_C_12 : ((strlen{Here}(s) :> integer) ==
+                             ((strlen{Here}(p) :> integer) + (p - s))));
+      behavior default:
+        
+        assigns count,
+        p,
+        r;
+      variant (_C_11 : ((strlen{Here}(s) :> integer) - (p - s)));
+      while (true)
+      {  
+         {  (if (_C_24 : ((_C_23 : ((_C_22 : p.charM) :> int32)) !=
+                           (0 :> int32))) then () else 
+            (goto while_0_break));
+            
+            {  (_C_25 : (r = reject));
+               
+               loop 
+               behavior default:
+                 invariant (_C_32 : (\base_block(reject) == \base_block(r)));
+               behavior default:
+                 invariant (_C_31 : valid_str{Here}(r));
+               behavior default:
+                 invariant (_C_28 : ((_C_29 : ((reject - r) <= 0)) &&
+                                      (_C_30 : ((r -
+                                                  (reject +
+                                                    (strlen{Here}(reject) :> integer))) <=
+                                                 0))));
+               behavior default:
+                 invariant (_C_27 : ((strlen{Here}(reject) :> integer) ==
+                                      ((strlen{Here}(r) :> integer) +
+                                        (r - reject))));
+               variant (_C_26 : ((strlen{Here}(reject) :> integer) -
+                                  (r - reject)));
+               while (true)
+               {  
+                  {  (if (_C_35 : ((_C_34 : ((_C_33 : r.charM) :> int32)) !=
+                                    (0 :> int32))) then () else 
+                     (goto while_1_break));
+                     
+                     {  (if (_C_42 : ((_C_41 : ((_C_40 : p.charM) :> int32)) ==
+                                       (_C_39 : ((_C_38 : r.charM) :> int32)))) then 
+                        {  
+                           {  
+                              (assert for default: (_C_36 : (jessie : 
+                                                            (p.charM ==
+                                                              r.charM))));
+                              ()
+                           };
+                           
+                           {  (_C_37 : (__retres = count));
+                              
+                              (goto return_label)
+                           }
+                        } else ())
+                     };
+                     (_C_44 : (r = (_C_43 : (r + (1 :> int32)))))
+                  }
+               };
+               (while_1_break : ());
+               (Before : ());
+               (_C_47 : (count = (_C_46 : ((_C_45 : (count + (1 :> uint64))) :> uint64))));
+               
+               {  
+                  (assert for default: (_C_48 : (jessie : (\at(((count :> integer) +
+                                                                 1),Before) ==
+                                                            (\at(count,Here) :> integer)))));
+                  ()
+               }
+            };
+            (_C_50 : (p = (_C_49 : (p + (1 :> int32)))))
+         }
+      };
+      (while_0_break : ());
+      (_C_51 : (__retres = count));
+      (return_label : 
+      (return __retres))
+   }
+}
