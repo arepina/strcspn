@@ -308,28 +308,28 @@
 <theory name="Root_unsigned_charP_unsafe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Axiomatic_Strlen" sum="898da025ab210d3d8c5d973799e87b6c" expanded="true">
- <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1" expanded="true">
+ <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1">
  <proof prover="0" steplimit="-1"><result status="timeout" time="4.94"/></proof>
  </goal>
- <goal name="Strlen_before_null" expl="Lemma strlen_before_null" expanded="true">
+ <goal name="Strlen_before_null" expl="Lemma strlen_before_null">
  <proof prover="0" steplimit="-1"><result status="timeout" time="4.95"/></proof>
  </goal>
- <goal name="Strlen_at_null" expl="Lemma strlen_at_null" expanded="true">
+ <goal name="Strlen_at_null" expl="Lemma strlen_at_null">
  <proof prover="0" steplimit="-1"><result status="timeout" time="4.87"/></proof>
  </goal>
- <goal name="Strlen_shift" expl="Lemma strlen_shift" expanded="true">
+ <goal name="Strlen_shift" expl="Lemma strlen_shift">
  <proof prover="0" steplimit="-1"><result status="timeout" time="4.84"/></proof>
  </goal>
  <goal name="Strlen_shift_ex" expl="Lemma strlen_shift_ex">
  <proof prover="0" steplimit="-1"><result status="valid" time="0.01" steps="13"/></proof>
  </goal>
- <goal name="Strlen_shift1" expl="Lemma strlen_shift1" expanded="true">
+ <goal name="Strlen_shift1" expl="Lemma strlen_shift1">
  <proof prover="0" steplimit="-1"><result status="timeout" time="4.98"/></proof>
  </goal>
- <goal name="Strlen_pointers" expl="Lemma strlen_pointers" expanded="true">
+ <goal name="Strlen_pointers" expl="Lemma strlen_pointers">
  <proof prover="0" steplimit="-1"><result status="timeout" time="4.98"/></proof>
  </goal>
- <goal name="Strlen_main" expl="Lemma strlen_main" expanded="true">
+ <goal name="Strlen_main" expl="Lemma strlen_main">
  <proof prover="0" steplimit="-1"><result status="valid" time="0.06" steps="349"/></proof>
  </goal>
 </theory>
@@ -439,7 +439,7 @@
    </goal>
   </transf>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.3" expl="3. Assertion in line 89">
+  <goal name="WP_parameter strcspn_ensures_default.3" expl="3. Assertion in line 30">
   <proof prover="0"><result status="valid" time="0.01" steps="86"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_ensures_default.4" expl="4. loop invariant preservation">
@@ -462,7 +462,7 @@
    </goal>
   </transf>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.5" expl="5. Assertion in line 94">
+  <goal name="WP_parameter strcspn_ensures_default.5" expl="5. Assertion in line 35">
   <proof prover="0"><result status="valid" time="0.02" steps="33"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_ensures_default.6" expl="6. loop invariant preservation">
