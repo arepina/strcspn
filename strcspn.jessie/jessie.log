@@ -22,11 +22,11 @@ Typing lemma/axiom strlen_pointers
 Typing lemma/axiom strlen_main
 Typing axiomatic Strcspn
 Typing lemma/axiom strcspn_shift
-Typing lemma/axiom strcspn_shift_one_more
 Typing lemma/axiom strcspn_pointers
 Typing lemma/axiom strcspn_all_chars
-Typing lemma/axiom strcspn_zero
-Typing lemma/axiom strcspn_null
+Typing lemma/axiom strcspn_zero_s
+Typing lemma/axiom strcspn_zero_reject
+Typing lemma/axiom strcspn_less
 Computation of call graph
 ***********************************
 Logic call graph: has 3 components
@@ -39,10 +39,10 @@ Component 1:
 
 Component 2:
  strcspn calls: strcspn, strcspn, strlen, valid_str, valid_str,
-strlen, strcspn, strlen, strlen, valid_str, valid_str, strcspn, strcspn,
-strlen, valid_str, valid_str, strlen, strcspn, strlen, valid_str, valid_str,
-strcspn, strlen, valid_str, valid_str,
-strlen
+strcspn, strcspn, strlen, valid_str, valid_str, strlen, strcspn, strlen,
+strlen, valid_str, valid_str, strcspn, strlen, valid_str, valid_str, strlen,
+strcspn, strlen, valid_str, valid_str, strlen, strcspn, valid_str,
+valid_str
 
 ******************************
 Call graph: has 1 components
