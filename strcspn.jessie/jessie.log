@@ -6,6 +6,7 @@ Typing code
 Typing axiomatic Padding
 Typing logic type declaration padding
 Typing axiomatic Strlen
+Typing axiomatic Strcspn
 Typing axiomatic Padding
 Typing tag voidP
 Typing tag charP
@@ -19,15 +20,29 @@ Typing lemma/axiom strlen_shift_ex
 Typing lemma/axiom strlen_shift1
 Typing lemma/axiom strlen_pointers
 Typing lemma/axiom strlen_main
+Typing axiomatic Strcspn
+Typing lemma/axiom strcspn_shift
+Typing lemma/axiom strcspn_shift_one_more
+Typing lemma/axiom strcspn_pointers
+Typing lemma/axiom strcspn_all_chars
+Typing lemma/axiom strcspn_zero
+Typing lemma/axiom strcspn_null
 Computation of call graph
 ***********************************
-Logic call graph: has 2 components
+Logic call graph: has 3 components
 ***********************************
 Component 0:
  valid_str calls: 
 
 Component 1:
  strlen calls: strlen
+
+Component 2:
+ strcspn calls: strcspn, strcspn, strlen, valid_str, valid_str,
+strlen, strcspn, strlen, strlen, valid_str, valid_str, strcspn, strcspn,
+strlen, valid_str, valid_str, strlen, strcspn, strlen, valid_str, valid_str,
+strcspn, strlen, valid_str, valid_str,
+strlen
 
 ******************************
 Call graph: has 1 components
@@ -64,23 +79,35 @@ Effects for logic function strlen:
  globals: 
  locals: s_1 at (Here)
 
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function strcspn:
+ alloc_table: 
+ tag_table: 
+ memories: 
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
+
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: doing one iteration...
 Effects: fixpoint reached
 Effects for function strcspn:
- reads:  alloc_table: (reject_5 : alloc-root "voidP") at (Here),
-                      (s_4 : alloc-root "voidP") at (Here)
-         tag_table: (reject_5 : voidP) at (Here), (s_4 : voidP) at (Here)
-         memories: (reject_5 : mem-field "charM") at (Here),
-                   (s_4 : mem-field "charM") at (Here)
-         raw memories: (reject_5 : mem-field "charM") at (Here),
-                       (s_4 : mem-field "charM") at (Here)
+ reads:  alloc_table: (reject_7 : alloc-root "voidP") at (Here),
+                      (s_6 : alloc-root "voidP") at (Here)
+         tag_table: (reject_7 : voidP) at (Here), (s_6 : voidP) at (Here)
+         memories: (reject_7 : mem-field "charM") at (Here),
+                   (s_6 : mem-field "charM") at (Here)
+         raw memories: (reject_7 : mem-field "charM") at (Here),
+                       (s_6 : mem-field "charM") at (Here)
          precise memories: 
          globals: 
          locals: __retres at (Here), count at (Here), r at (Here),
-                 p at (Here), reject at (Here), s at (Here)
+                 p at (Here), \result at (Here), reject at (Here),
+                 s at (Here)
 
  writes:  alloc_table: 
           tag_table: 
@@ -684,8 +711,10 @@ Translate dummies
 Translate standalone logic functions
 Logic function valid_str
 Logic function strlen
+Logic function strcspn
 Translate axiomatic declarations
 Axiomatic Padding
+Axiomatic Strcspn
 Axiomatic Strlen
 Translate lemmas
 Translate functions

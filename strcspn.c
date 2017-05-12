@@ -1,12 +1,48 @@
 #include "strcspn.h"
 
+/*@ axiomatic Strcspn {
 
+    logic size_t strcspn(char *s, char *reject);
+
+		lemma strcspn_shift:
+       \forall char *s, *reject;
+          valid_str(s) && valid_str(reject) && *s != '\0'
+					&& (\forall char *r; reject <= r < reject + strlen(reject) ==> *r != *s)
+					==> strcspn(s, reject) == 1 + strcspn(s + 1, reject);
+
+		lemma strcspn_shift_one_more:
+       \forall char *s, *reject, *sc;
+          valid_str(s) && valid_str(reject) && *s != '\0'
+					&& s <= sc < s + strlen(s) && (\forall char *r; reject <= r < reject + strlen(reject) ==> *r != *sc)
+					==> strcspn(sc, reject) == strlen(sc);
+
+		lemma strcspn_pointers:
+			 \forall char *s, *sc, *reject;
+					valid_str(s)  && valid_str(sc) &&
+					\base_addr(s) == \base_addr(sc) &&
+					s <= sc < s + strlen(s)
+					==> strcspn(sc, reject) <= strcspn(s, reject);
+
+		lemma strcspn_all_chars:
+       \forall char* s, *reject, integer i;
+          valid_str(s) && valid_str(reject) && 0 <= i < strlen(s) && s[i] != '\0'
+					==> strcspn(s, reject) == strlen(s);
+
+    lemma strcspn_zero:
+       \forall char* s, *reject;
+				 valid_str(s) && valid_str(reject) && strlen(s) == 0
+				 ==> strcspn(s, reject) == 0;
+
+		 lemma strcspn_null:
+      \forall char *s; strlen(s) == 0 ==> *s == '\0';
+
+	}
+*/
 
 /*@ requires valid_str(s);
     requires valid_str(reject);
     assigns \nothing;
-		//ensures strcspn(s, reject) == strcspn(p, reject) + count;
-		//ensures \result == strcspn(s, reject);
+		ensures \result == strcspn(s, reject);
  */
 size_t strcspn(const char *s, const char *reject)
 {
@@ -19,8 +55,10 @@ size_t strcspn(const char *s, const char *reject)
 			loop invariant count == p - s;
       loop invariant s <= p <= s + strlen(s);
       loop invariant strlen(s) == strlen(p) + (p - s);
-			loop invariant \forall char *z, t; s <= z < p && reject <= t < reject + strlen(reject) ==> *z != *t;
-			//loop invariant strcspn(s, reject) == strcspn(p, reject) + count;
+			loop invariant \forall char *z, *t; s <= z < p && reject <= t < reject + strlen(reject) ==> *z != *t;
+
+			loop invariant strcspn(s, reject) == strcspn(p, reject) + count;
+
 			loop assigns count, p, r;
       loop variant strlen(s) - (p - s);
  */

@@ -2,7 +2,7 @@
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
 "http://why3.lri.fr/why3session.dtd">
 <why3session shape_version="4">
-<prover id="0" name="Alt-Ergo" version="1.30" timelimit="5" steplimit="1" memlimit="1000"/>
+<prover id="0" name="Alt-Ergo" version="1.30" timelimit="5" memlimit="1000"/>
 <prover id="1" name="CVC4" version="1.4" timelimit="5" steplimit="1" memlimit="1000"/>
 <file name="../strcspn.mlw" expanded="true">
 <theory name="Axiomatic_Padding" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
@@ -309,164 +309,134 @@
 </theory>
 <theory name="Axiomatic_Strlen" sum="898da025ab210d3d8c5d973799e87b6c" expanded="true">
  <goal name="Valid_str_shift1" expl="Lemma valid_str_shift1">
- <proof prover="0" steplimit="-1"><result status="timeout" time="4.94"/></proof>
+ <proof prover="0" steplimit="1"><result status="timeout" time="4.94"/></proof>
  </goal>
  <goal name="Strlen_before_null" expl="Lemma strlen_before_null">
- <proof prover="0" steplimit="-1"><result status="timeout" time="4.95"/></proof>
+ <proof prover="0" steplimit="1"><result status="timeout" time="4.95"/></proof>
  </goal>
  <goal name="Strlen_at_null" expl="Lemma strlen_at_null">
- <proof prover="0" steplimit="-1"><result status="timeout" time="4.87"/></proof>
+ <proof prover="0" steplimit="1"><result status="timeout" time="4.87"/></proof>
  </goal>
  <goal name="Strlen_shift" expl="Lemma strlen_shift">
- <proof prover="0" steplimit="-1"><result status="timeout" time="4.84"/></proof>
+ <proof prover="0" steplimit="1"><result status="timeout" time="4.84"/></proof>
  </goal>
  <goal name="Strlen_shift_ex" expl="Lemma strlen_shift_ex">
- <proof prover="0" steplimit="-1"><result status="valid" time="0.01" steps="13"/></proof>
+ <proof prover="0" steplimit="1"><result status="valid" time="0.01" steps="13"/></proof>
  </goal>
  <goal name="Strlen_shift1" expl="Lemma strlen_shift1">
- <proof prover="0" steplimit="-1"><result status="timeout" time="4.98"/></proof>
+ <proof prover="0" steplimit="1"><result status="timeout" time="4.98"/></proof>
  </goal>
  <goal name="Strlen_pointers" expl="Lemma strlen_pointers">
- <proof prover="0" steplimit="-1"><result status="timeout" time="4.98"/></proof>
+ <proof prover="0" steplimit="1"><result status="timeout" time="4.98"/></proof>
  </goal>
  <goal name="Strlen_main" expl="Lemma strlen_main">
- <proof prover="0" steplimit="-1"><result status="valid" time="0.06" steps="349"/></proof>
+ <proof prover="0" steplimit="1"><result status="valid" time="0.06" steps="349"/></proof>
+ </goal>
+</theory>
+<theory name="Axiomatic_Strcspn" sum="bceb9fb6c37d214815f8cfd92fec733a" expanded="true">
+ <goal name="Strcspn_shift" expl="Lemma strcspn_shift">
+ <proof prover="0"><result status="timeout" time="4.93"/></proof>
+ </goal>
+ <goal name="Strcspn_shift_one_more" expl="Lemma strcspn_shift_one_more">
+ <proof prover="0"><result status="timeout" time="4.98"/></proof>
+ </goal>
+ <goal name="Strcspn_pointers" expl="Lemma strcspn_pointers">
+ <proof prover="0"><result status="timeout" time="4.95"/></proof>
+ </goal>
+ <goal name="Strcspn_all_chars" expl="Lemma strcspn_all_chars">
+ <proof prover="0"><result status="timeout" time="4.80"/></proof>
+ </goal>
+ <goal name="Strcspn_zero" expl="Lemma strcspn_zero">
+ <proof prover="0"><result status="timeout" time="4.79"/></proof>
+ </goal>
+ <goal name="Strcspn_null" expl="Lemma strcspn_null">
+ <proof prover="0"><result status="timeout" time="4.97"/></proof>
  </goal>
 </theory>
 <theory name="Safe_int32_of_Safe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 <theory name="Exceptions" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strcspn_safety" sum="0d429a556ac58f70d6669356c80d1b0b">
- <goal name="WP_parameter strcspn" expl="Function strcspn, safety">
- <proof prover="0" obsolete="true"><result status="timeout" time="4.39"/></proof>
+<theory name="Function_strcspn_0_safety" sum="4bbd502fa065755cac0baf886d86cf7c">
+ <goal name="WP_parameter strcspn_0" expl="Function strcspn, safety">
+ <proof prover="0" steplimit="1"><result status="timeout" time="5.93"/></proof>
  <transf name="split_goal_wp">
-  <goal name="WP_parameter strcspn.1" expl="1. Integer cast (integer overflow)">
+  <goal name="WP_parameter strcspn_0.1" expl="1. Integer cast (integer overflow)">
   <proof prover="0"><result status="valid" time="0.01" steps="10"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.2" expl="2. Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="26"/></proof>
+  <goal name="WP_parameter strcspn_0.2" expl="2. Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="27"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.3" expl="3. Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.35" steps="812"/></proof>
+  <goal name="WP_parameter strcspn_0.3" expl="3. Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.67" steps="1061"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.4" expl="4. Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="31"/></proof>
+  <goal name="WP_parameter strcspn_0.4" expl="4. Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="32"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.5" expl="5. Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="1.53" steps="1867"/></proof>
+  <goal name="WP_parameter strcspn_0.5" expl="5. Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="2.20" steps="2051"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.6" expl="6. Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.01" steps="36"/></proof>
+  <goal name="WP_parameter strcspn_0.6" expl="6. Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.02" steps="37"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.7" expl="7. Pointer dereference (Validity)">
-  <proof prover="0"><result status="valid" time="0.01" steps="37"/></proof>
+  <goal name="WP_parameter strcspn_0.7" expl="7. Pointer dereference (Validity)">
+  <proof prover="0"><result status="valid" time="0.02" steps="38"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.8" expl="8. Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="49"/></proof>
+  <goal name="WP_parameter strcspn_0.8" expl="8. Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="50"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.9" expl="9. loop variant decrease">
-  <proof prover="0"><result status="valid" time="0.09" steps="442"/></proof>
+  <goal name="WP_parameter strcspn_0.9" expl="9. loop variant decrease">
+  <proof prover="0"><result status="valid" time="0.12" steps="459"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.10" expl="10. Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="46"/></proof>
+  <goal name="WP_parameter strcspn_0.10" expl="10. Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="47"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.11" expl="11. integer overflow">
-  <proof prover="0"><result status="valid" time="2.28" steps="2409"/></proof>
-  <proof prover="1" obsolete="true"><result status="timeout" time="4.96"/></proof>
+  <goal name="WP_parameter strcspn_0.11" expl="11. integer overflow">
+  <proof prover="0"><result status="valid" time="3.38" steps="2981"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.12" expl="12. Integer cast (integer overflow)">
-  <proof prover="0"><result status="valid" time="0.01" steps="56"/></proof>
+  <goal name="WP_parameter strcspn_0.12" expl="12. Integer cast (integer overflow)">
+  <proof prover="0"><result status="valid" time="0.02" steps="57"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn.13" expl="13. loop variant decrease">
-  <proof prover="0"><result status="valid" time="0.06" steps="233"/></proof>
+  <goal name="WP_parameter strcspn_0.13" expl="13. loop variant decrease">
+  <proof prover="0"><result status="valid" time="0.06" steps="240"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strcspn_behaviors" sum="a85b8c3b6fb8d2242c2030347895c080">
- <goal name="WP_parameter strcspn_ensures_default" expl="Function strcspn, default behavior">
- <proof prover="0" obsolete="true"><result status="timeout" time="4.38"/></proof>
- <transf name="split_goal_wp">
+<theory name="Function_strcspn_0_behaviors" sum="70e2bbc6080fdfda6c636a042190b40a" expanded="true">
+ <goal name="WP_parameter strcspn_ensures_default" expl="Function strcspn, default behavior" expanded="true">
+ <proof prover="0" steplimit="1" obsolete="true"><result status="timeout" time="4.99"/></proof>
+ <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strcspn_ensures_default.1" expl="1. loop invariant init">
-  <proof prover="0" obsolete="true"><result status="timeout" time="4.93"/></proof>
-  <transf name="split_goal_wp">
-   <goal name="WP_parameter strcspn_ensures_default.1.1" expl="1. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.01" steps="13"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.1.2" expl="2. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.01" steps="11"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.1.3" expl="3. Function strcspn, default behavior">
-   <proof prover="0" steplimit="-1"><result status="valid" time="0.01" steps="12"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.1.4" expl="4. Function strcspn, default behavior">
-   <proof prover="0" steplimit="-1"><result status="valid" time="0.02" steps="30"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.1.5" expl="5. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.01" steps="19"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.1.6" expl="6. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.01" steps="15"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.1.7" expl="7. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.02" steps="27"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.1.8" expl="8. Function strcspn, default behavior">
-   <proof prover="0" steplimit="-1"><result status="valid" time="0.02" steps="17"/></proof>
-   </goal>
-  </transf>
+  <proof prover="0" steplimit="1"><result status="timeout" time="4.99"/></proof>
+  <proof prover="1" obsolete="true"><result status="timeout" time="5.09"/></proof>
   </goal>
   <goal name="WP_parameter strcspn_ensures_default.2" expl="2. loop invariant init">
-  <proof prover="0" obsolete="true"><result status="timeout" time="4.97"/></proof>
-  <transf name="split_goal_wp">
-   <goal name="WP_parameter strcspn_ensures_default.2.1" expl="1. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.01" steps="27"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.2.2" expl="2. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.01" steps="23"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.2.3" expl="3. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.01" steps="30"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.2.4" expl="4. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.01" steps="62"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.2.5" expl="5. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.01" steps="32"/></proof>
-   </goal>
-  </transf>
+  <proof prover="0" steplimit="1"><result status="timeout" time="5.00"/></proof>
+  <proof prover="1" obsolete="true"><result status="timeout" time="6.01"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.3" expl="3. Assertion in line 30">
-  <proof prover="0"><result status="valid" time="0.01" steps="86"/></proof>
+  <goal name="WP_parameter strcspn_ensures_default.3" expl="3. Assertion in line 77">
+  <proof prover="0" steplimit="1"><result status="valid" time="0.03" steps="89"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.4" expl="4. loop invariant preservation">
-  <proof prover="0" obsolete="true"><result status="valid" time="0.11" steps="278"/></proof>
-  <transf name="split_goal_wp">
-   <goal name="WP_parameter strcspn_ensures_default.4.1" expl="1. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.02" steps="41"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.4.2" expl="2. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.02" steps="121"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.4.3" expl="3. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.02" steps="44"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.4.4" expl="4. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.05" steps="249"/></proof>
-   </goal>
-   <goal name="WP_parameter strcspn_ensures_default.4.5" expl="5. Function strcspn, default behavior">
-   <proof prover="0"><result status="valid" time="0.07" steps="318"/></proof>
-   </goal>
-  </transf>
+  <goal name="WP_parameter strcspn_ensures_default.4" expl="4. Ensures clause (Postcondition)">
+  <proof prover="0" steplimit="1"><result status="timeout" time="4.99"/></proof>
+  <proof prover="1" obsolete="true"><result status="timeout" time="5.05"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.5" expl="5. Assertion in line 35">
-  <proof prover="0"><result status="valid" time="0.02" steps="33"/></proof>
+  <goal name="WP_parameter strcspn_ensures_default.5" expl="5. loop invariant preservation">
+  <proof prover="0" steplimit="1"><result status="timeout" time="5.00"/></proof>
+  <proof prover="1" obsolete="true"><result status="timeout" time="5.09"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.6" expl="6. loop invariant preservation">
-  <proof prover="0"><result status="valid" time="1.02" steps="3102"/></proof>
+  <goal name="WP_parameter strcspn_ensures_default.6" expl="6. Assertion in line 82">
+  <proof prover="0" steplimit="1"><result status="valid" time="0.01" steps="34"/></proof>
+  </goal>
+  <goal name="WP_parameter strcspn_ensures_default.7" expl="7. loop invariant preservation">
+  <proof prover="0" steplimit="1"><result status="timeout" time="4.99"/></proof>
+  <proof prover="1" obsolete="true"><result status="timeout" time="5.08"/></proof>
+  </goal>
+  <goal name="WP_parameter strcspn_ensures_default.8" expl="8. Ensures clause (Postcondition)">
+  <proof prover="0" steplimit="1"><result status="valid" time="0.80" steps="1280"/></proof>
   </goal>
  </transf>
  </goal>
@@ -937,9 +907,9 @@
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int16" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strcspn" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Function_strcspn_0" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strcspn_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
+<theory name="Function_strcspn_0_safe" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
 </file>
 </why3session>
