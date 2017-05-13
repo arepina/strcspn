@@ -4,11 +4,16 @@
 
     logic size_t strcspn(char *s, char *reject);
 
+		// lemma strcspn_shift:
+    //    \forall char *s, *reject;
+    //       valid_str(s) && valid_str(reject) && *s != '\0'
+		// 			&& (\forall char *r; reject <= r < reject + strlen(reject) ==> *r != *s)
+		// 			==> strcspn(s, reject) == 1 + strcspn(s + 1, reject);
+
 		lemma strcspn_shift:
-       \forall char *s, *reject;
-          valid_str(s) && valid_str(reject) && *s != '\0'
-					&& (\forall char *r; reject <= r < reject + strlen(reject) ==> *r != *s)
-					==> strcspn(s, reject) == 1 + strcspn(s + 1, reject);
+       \forall char *s,*reject;
+          valid_str(s) && valid_str(reject) && *s != '\0' && !in_array(reject,*s) ==>
+          strcspn(s, reject) == 1 + strcspn(s + 1, reject);
 
 		lemma strcspn_pointers:
 			 \forall char *s, *sc, *reject;
@@ -33,6 +38,10 @@
 				valid_str(s) && valid_str(reject) && strlen(reject) == 0
 				==> strcspn(s, reject) == strlen(s);
 
+		lemma strspn_at_null:
+	     \forall char* s,*reject;
+	      *s == '\0' ==> strcspn(s, reject) == 0;
+
 		lemma strcspn_less:
 				\forall char* s, *reject;
 					valid_str(s) && valid_str(reject) && *s != '\0'
@@ -44,8 +53,6 @@
 
 /*@ requires valid_str(s);
     requires valid_str(reject);
-		requires \forall char *sc; s <= sc < s + strlen(s) ==> *sc != '\0';
-		requires \forall char *r; reject <= r < reject + strlen(reject) ==> *r != '\0';
     assigns \nothing;
 		ensures \forall char *t, integer i; 0 <= i < \result && reject <= t < reject + strlen(reject) ==> s[i] != *t;
 		ensures \result == strcspn(s, reject);
