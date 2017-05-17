@@ -1,11 +1,9 @@
-#ifndef __STRCSPN_H__
-#define __STRCSPN_H__
+#pragma once
 
 typedef unsigned long __kernel_ulong_t;
-
 typedef __kernel_ulong_t __kernel_size_t;
-
 typedef __kernel_size_t size_t;
+
 
 /*@ axiomatic Strlen {
     predicate valid_str(char *s) =
@@ -78,4 +76,63 @@ typedef __kernel_size_t size_t;
     }
  */
 
-#endif // __STRCSPN_H__
+//____________________________________________________________________________________________________________________________________________
+
+ /*@ axiomatic Strcspn {
+
+     logic size_t strcspn(char *s, char *reject);
+ 		//= s[0] == '\0' ? (size_t)0 : (!in_array(reject, *s) ? (size_t)strlen(s) : (size_t)1 + strcspn(s + 1, reject));
+
+ 		// lemma strcspn_shift:
+     //    \forall char *s, *reject;
+     //       valid_str(s) && valid_str(reject) && *s != '\0'
+ 		// 			&& (\forall char *r; reject <= r < reject + strlen(reject) ==> *r != *s)
+ 		// 			==> strcspn(s, reject) == 1 + strcspn(s + 1, reject);
+
+ 		lemma strcspn_shift:
+        \forall char *s,*reject;
+           valid_str(s) && valid_str(reject) && *s != '\0' && !in_array(reject,*s) ==>
+           strcspn(s, reject) == 1 + strcspn(s + 1, reject);
+
+ 		lemma strcspn_pointers:
+ 			 \forall char *s, *sc, *reject;
+ 					valid_str(s)  && valid_str(sc) &&
+ 					\base_addr(s) == \base_addr(sc) &&
+ 					s <= sc < s + strlen(s)
+ 					==> strcspn(sc, reject) <= strcspn(s, reject);
+
+ 		lemma strcspn_all_chars:
+        \forall char* s, *reject, *sc;
+           valid_str(s) && valid_str(reject) && *s != '\0' && s <= sc < s + strlen(s)
+ 					&& (\forall char *r; reject <= r < reject + strlen(reject) ==> *r != *sc)
+ 					==> strcspn(s, reject) == strlen(s);
+
+     lemma strcspn_zero_s:
+        \forall char* s, *reject;
+ 				 valid_str(s) && valid_str(reject) && strlen(s) == 0
+ 				 ==> strcspn(s, reject) == 0;
+
+ 	 lemma strcspn_zero_reject:
+ 			\forall char* s, *reject;
+ 				valid_str(s) && valid_str(reject) && strlen(reject) == 0
+ 				==> strcspn(s, reject) == strlen(s);
+
+ 		lemma strspn_at_null:
+ 	     \forall char* s,*reject;
+ 	      *s == '\0' ==> strcspn(s, reject) == 0;
+
+ 		lemma strcspn_less:
+ 				\forall char* s, *reject;
+ 					valid_str(s) && valid_str(reject) && *s != '\0'
+ 					==> strcspn(s, reject) <= strlen(s);
+
+ 	}
+ */
+
+ /*@ requires valid_str(s);
+     requires valid_str(reject);
+     assigns \nothing;
+ 		ensures \forall char *t, integer i; 0 <= i < \result && reject <= t < reject + strlen(reject) ==> s[i] != *t;
+ 		ensures \result == strcspn(s, reject);
+  */
+ size_t strcspn(const char *s, const char *reject);
