@@ -81,13 +81,6 @@ typedef __kernel_size_t size_t;
  /*@ axiomatic Strcspn {
 
      logic size_t strcspn(char *s, char *reject);
- 		//= s[0] == '\0' ? (size_t)0 : (!in_array(reject, *s) ? (size_t)strlen(s) : (size_t)1 + strcspn(s + 1, reject));
-
- 		// lemma strcspn_shift:
-     //    \forall char *s, *reject;
-     //       valid_str(s) && valid_str(reject) && *s != '\0'
- 		// 			&& (\forall char *r; reject <= r < reject + strlen(reject) ==> *r != *s)
- 		// 			==> strcspn(s, reject) == 1 + strcspn(s + 1, reject);
 
  		lemma strcspn_shift:
         \forall char *s,*reject;

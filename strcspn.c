@@ -11,7 +11,7 @@ size_t strcspn(const char *s, const char *reject)
 			loop invariant count == p - s;
       loop invariant s <= p <= s + strlen(s);
       loop invariant strlen(s) == strlen(p) + (p - s);
-			loop invariant \forall char *z, *t; s <= z < p && reject <= t < reject + strlen(reject) ==> *z != *t;
+			//loop invariant \forall char *z, *t; s <= z < p && reject <= t < reject + strlen(reject) ==> *z != *t;
 			//loop invariant strcspn(s, reject) >= strcspn(p, reject) + count;
 			loop assigns count, p, r;
       loop variant strlen(s) - (p - s);
@@ -21,7 +21,7 @@ size_t strcspn(const char *s, const char *reject)
 				loop invariant valid_str(r);
 				loop invariant reject <= r <= reject + strlen(reject);
 				loop invariant strlen(reject) == strlen(r) + (r - reject);
-				loop invariant \forall char *t; reject <= t < r ==> *p != *t;
+				//loop invariant \forall char *t; reject <= t < r ==> *p != *t;
         loop variant strlen(reject) - (r - reject);
     */
 		for (r = reject; *r != '\0'; ++r) {
