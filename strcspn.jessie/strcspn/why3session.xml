@@ -416,9 +416,9 @@
 </theory>
 <theory name="Unsafe_int32_of_Unsafe_int8" sum="d41d8cd98f00b204e9800998ecf8427e" expanded="true">
 </theory>
-<theory name="Function_strcspn_0_behaviors" sum="ae0afc7452ea07f2e2e07b69f193f2a8" expanded="true">
+<theory name="Function_strcspn_0_behaviors" sum="bf6ba601fc0b9eabf8a8ea7a0f0f66ad" expanded="true">
  <goal name="WP_parameter strcspn_ensures_default" expl="Function strcspn, default behavior" expanded="true">
- <proof prover="0"><result status="timeout" time="4.97"/></proof>
+ <proof prover="0" obsolete="true"><result status="timeout" time="4.97"/></proof>
  <transf name="split_goal_wp" expanded="true">
   <goal name="WP_parameter strcspn_ensures_default.1" expl="1. loop invariant init">
   <proof prover="0"><result status="valid" time="0.07" steps="147"/></proof>
@@ -429,8 +429,16 @@
   <goal name="WP_parameter strcspn_ensures_default.3" expl="3. Assertion in line 29">
   <proof prover="0"><result status="valid" time="0.03" steps="86"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.4" expl="4. Ensures clause (Postcondition)">
-  <proof prover="0"><result status="timeout" time="4.96"/></proof>
+  <goal name="WP_parameter strcspn_ensures_default.4" expl="4. Ensures clause (Postcondition)" expanded="true">
+  <proof prover="0" obsolete="true"><result status="timeout" time="4.96"/></proof>
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter strcspn_ensures_default.4.1" expl="1. Ensures clause" expanded="true">
+   <proof prover="0" steplimit="-1"><result status="timeout" time="4.54"/></proof>
+   </goal>
+   <goal name="WP_parameter strcspn_ensures_default.4.2" expl="2. Ensures clause" expanded="true">
+   <proof prover="0" steplimit="-1"><result status="timeout" time="4.59"/></proof>
+   </goal>
+  </transf>
   </goal>
   <goal name="WP_parameter strcspn_ensures_default.5" expl="5. loop invariant preservation">
   <proof prover="0"><result status="valid" time="1.23" steps="3488"/></proof>
@@ -441,8 +449,16 @@
   <goal name="WP_parameter strcspn_ensures_default.7" expl="7. loop invariant preservation">
   <proof prover="0"><result status="valid" time="1.17" steps="3154"/></proof>
   </goal>
-  <goal name="WP_parameter strcspn_ensures_default.8" expl="8. Ensures clause (Postcondition)">
-  <proof prover="0"><result status="timeout" time="4.96"/></proof>
+  <goal name="WP_parameter strcspn_ensures_default.8" expl="8. Ensures clause (Postcondition)" expanded="true">
+  <proof prover="0" obsolete="true"><result status="timeout" time="4.96"/></proof>
+  <transf name="split_goal_wp" expanded="true">
+   <goal name="WP_parameter strcspn_ensures_default.8.1" expl="1. Ensures clause">
+   <proof prover="0" steplimit="-1"><result status="timeout" time="4.76"/></proof>
+   </goal>
+   <goal name="WP_parameter strcspn_ensures_default.8.2" expl="2. Ensures clause">
+   <proof prover="0" steplimit="-1"><result status="timeout" time="4.23"/></proof>
+   </goal>
+  </transf>
   </goal>
  </transf>
  </goal>

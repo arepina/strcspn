@@ -1,7 +1,10 @@
-#pragma once
+#ifndef __STRCSPN_H__
+#define __STRCSPN_H__
 
 typedef unsigned long __kernel_ulong_t;
+
 typedef __kernel_ulong_t __kernel_size_t;
+
 typedef __kernel_size_t size_t;
 
 
@@ -121,11 +124,5 @@ typedef __kernel_size_t size_t;
 
  	}
  */
-
- /*@ requires valid_str(s);
-     requires valid_str(reject);
-     assigns \nothing;
- 		ensures \forall char *t, integer i; 0 <= i < \result && reject <= t < reject + strlen(reject) ==> s[i] != *t;
- 		ensures \result == strcspn(s, reject);
-  */
- size_t strcspn(const char *s, const char *reject);
+ 
+#endif // __STRCSPN_H__

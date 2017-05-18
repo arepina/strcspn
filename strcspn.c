@@ -1,5 +1,11 @@
 #include "strcspn.h"
 
+/*@ requires valid_str(s);
+		requires valid_str(reject);
+		assigns \nothing;
+	  ensures \forall char *t, integer i; 0 <= i < \result  && reject <= t < reject + strlen(reject)  ==> s[i] != *t;
+	  ensures \result == strcspn(s, reject);
+ */
 size_t strcspn(const char *s, const char *reject)
 {
 	const char *p;
