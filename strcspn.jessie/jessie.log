@@ -26,6 +26,7 @@ Typing lemma/axiom in_array_shift2
 Typing axiomatic Strcspn
 Typing lemma/axiom strcspn_shift
 Typing lemma/axiom strcspn_pointers
+Typing lemma/axiom strcspn_exists
 Typing lemma/axiom strcspn_all_chars
 Typing lemma/axiom strcspn_zero_s
 Typing lemma/axiom strcspn_zero_reject
@@ -46,10 +47,10 @@ Component 2:
 
 Component 3:
  strcspn calls: strcspn, strcspn, in_array, valid_str,
-valid_str, strcspn, strcspn, strlen, valid_str, valid_str, strlen, strcspn,
-strlen, strlen, valid_str, valid_str, strcspn, strlen, valid_str, valid_str,
-strlen, strcspn, strlen, valid_str, valid_str, strcspn, strlen, strcspn,
-valid_str,
+valid_str, strcspn, strcspn, strlen, valid_str, valid_str, strcspn, strlen,
+strlen, strlen, strlen, strcspn, strlen, strlen, valid_str, valid_str,
+strcspn, strlen, valid_str, valid_str, strlen, strcspn, strlen, valid_str,
+valid_str, strcspn, strlen, strcspn, valid_str,
 valid_str
 
 ******************************

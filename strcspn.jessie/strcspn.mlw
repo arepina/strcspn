@@ -1700,11 +1700,11 @@ theory Axiomatic_Strlen
        else ((=) true true))))
   
   lemma Valid_str_shift1
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 16 7 83#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 17 7 83#
   "expl:Lemma valid_str_shift1" :
   (forall voidP_s_0_9_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_0_9_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 16 7 83#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 17 7 83#
     (forall s_0_0 : (pointer voidP).
      ((((<>) (Int8.to_int (select charP_charM_s_0_9_at_L s_0_0)) (0)) /\
       (valid_str s_0_0 voidP_s_0_9_alloc_table_at_L charP_charM_s_0_9_at_L))
@@ -1716,11 +1716,11 @@ theory Axiomatic_Strlen
   Uint64.t
   
   lemma Strlen_before_null
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 22 7 106#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 23 7 106#
   "expl:Lemma strlen_before_null" :
   (forall voidP_s_2_10_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_2_10_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 22 7 106#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 23 7 106#
     (forall s_2 : (pointer voidP).
      (forall i_1 : int.
       (((valid_str s_2 voidP_s_2_10_alloc_table_at_L charP_charM_s_2_10_at_L)
@@ -1731,11 +1731,11 @@ theory Axiomatic_Strlen
        (0))))))))
   
   lemma Strlen_at_null
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 26 7 71#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 27 7 71#
   "expl:Lemma strlen_at_null" :
   (forall voidP_s_3_11_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_3_11_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 26 7 71#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 27 7 71#
     (forall s_3 : (pointer voidP).
      ((valid_str s_3 voidP_s_3_11_alloc_table_at_L charP_charM_s_3_11_at_L)
       ->
@@ -1745,11 +1745,11 @@ theory Axiomatic_Strlen
       (shift s_3 (Uint64.to_int (strlen s_3 charP_charM_s_3_11_at_L))))) (0)))))))
   
   lemma Strlen_shift
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 29 7 125#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 30 7 125#
   "expl:Lemma strlen_shift" :
   (forall voidP_s_4_12_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_4_12_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 29 7 125#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 30 7 125#
     (forall s_4 : (pointer voidP).
      (forall i_2 : Uint64.t.
       (((valid_str s_4 voidP_s_4_12_alloc_table_at_L charP_charM_s_4_12_at_L)
@@ -1761,11 +1761,11 @@ theory Axiomatic_Strlen
        (Uint64.to_int i_2)))))))))
   
   lemma Strlen_shift_ex
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 34 7 126#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 35 7 126#
   "expl:Lemma strlen_shift_ex" :
   (forall voidP_s_5_13_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_5_13_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 34 7 126#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 35 7 126#
     (forall s_5 : (pointer voidP).
      (forall i_3 : Uint64.t.
       (((valid_str s_5 voidP_s_5_13_alloc_table_at_L charP_charM_s_5_13_at_L)
@@ -1777,11 +1777,11 @@ theory Axiomatic_Strlen
        (strlen s_5 charP_charM_s_5_13_at_L))))))))
   
   lemma Strlen_shift1
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 39 7 103#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 40 7 103#
   "expl:Lemma strlen_shift1" :
   (forall voidP_s_6_14_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_6_14_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 39 7 103#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 40 7 103#
     (forall s_6 : (pointer voidP).
      (((valid_str s_6 voidP_s_6_14_alloc_table_at_L charP_charM_s_6_14_at_L)
       /\ ((<>) (Int8.to_int (select charP_charM_s_6_14_at_L s_6)) (0))) ->
@@ -1790,11 +1790,11 @@ theory Axiomatic_Strlen
       (Uint64.to_int (strlen (shift s_6 (1)) charP_charM_s_6_14_at_L)))))))))
   
   lemma Strlen_pointers
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 43 7 253#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 44 7 253#
   "expl:Lemma strlen_pointers" :
   (forall voidP_s_7_15_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_7_15_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 43 7 253#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 44 7 253#
     (forall s_7 : (pointer voidP).
      (forall sc : (pointer voidP).
       (((valid_str s_7 voidP_s_7_15_alloc_table_at_L charP_charM_s_7_15_at_L)
@@ -1811,11 +1811,11 @@ theory Axiomatic_Strlen
        (strlen s_7 charP_charM_s_7_15_at_L))))))))
   
   lemma Strlen_main
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 51 7 159#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 52 7 159#
   "expl:Lemma strlen_main" :
   (forall voidP_s_8_17_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_8_17_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 51 7 159#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 52 7 159#
     (forall s_8 : (pointer voidP).
      (forall n_2 : Uint64.t.
       (((valid_str s_8 voidP_s_8_17_alloc_table_at_L charP_charM_s_8_17_at_L)
@@ -1836,11 +1836,11 @@ theory Axiomatic_Strlen
   Int8.t)
   
   lemma In_array_shift1
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 61 5 129#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 62 5 129#
   "expl:Lemma in_array_shift1" :
   (forall voidP_s_10_18_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_10_18_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 61 5 129#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 62 5 129#
     (forall s_10 : (pointer voidP).
      (forall val_0 : Int8.t.
       (((valid_str s_10 voidP_s_10_18_alloc_table_at_L
@@ -1853,10 +1853,10 @@ theory Axiomatic_Strlen
        (in_array (shift s_10 (1)) val_0 charP_charM_s_10_18_at_L))))))))
   
   lemma In_array_at_null
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 65 8 95#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 66 8 95#
   "expl:Lemma in_array_at_null" :
   (forall charP_charM_s_11_19_at_L : (memory voidP Int8.t).
-   (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 65 8 95#
+   (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 66 8 95#
    (forall s_11 : (pointer voidP).
     (forall val_1 : Int8.t.
      ((((=) (Int8.to_int (select charP_charM_s_11_19_at_L s_11)) (0)) /\
@@ -1864,11 +1864,11 @@ theory Axiomatic_Strlen
       ((=) (in_array s_11 val_1 charP_charM_s_11_19_at_L) false))))))
   
   lemma In_array_shift2
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 69 7 124#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 70 7 124#
   "expl:Lemma in_array_shift2" :
   (forall voidP_s_12_20_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_12_20_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 69 7 124#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 70 7 124#
     (forall s_12 : (pointer voidP).
      (forall val_2 : Int8.t.
       (((valid_str s_12 voidP_s_12_20_alloc_table_at_L
@@ -1933,13 +1933,13 @@ theory Axiomatic_Strcspn
   Uint64.t
   
   lemma Strcspn_shift
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 81 8 179#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 82 8 179#
   "expl:Lemma strcspn_shift" :
   (forall voidP_reject_6_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_s_13_5_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_reject_6_at_L : (memory voidP Int8.t).
      (forall charP_charM_s_13_5_at_L : (memory voidP Int8.t).
-      (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 81 8 179#
+      (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 82 8 179#
       (forall s_14 : (pointer voidP).
        (forall reject_0_0 : (pointer voidP).
         (((valid_str s_14 voidP_s_13_5_alloc_table_at_L
@@ -1957,11 +1957,11 @@ theory Axiomatic_Strcspn
          (Int.(+) (1) (Uint64.to_int (strcspn (shift s_14 (1)) reject_0_0))))))))))))
   
   lemma Strcspn_pointers
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 86 5 197#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 87 5 197#
   "expl:Lemma strcspn_pointers" :
   (forall voidP_s_13_5_alloc_table_at_L : (alloc_table voidP).
    (forall charP_charM_s_13_5_at_L : (memory voidP Int8.t).
-    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 86 5 197#
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 87 5 197#
     (forall s_15 : (pointer voidP).
      (forall sc_0 : (pointer voidP).
       (forall reject_1 : (pointer voidP).
@@ -1979,68 +1979,86 @@ theory Axiomatic_Strcspn
         (0)))))) ->
         (Uint64.(<=) (strcspn sc_0 reject_1) (strcspn s_15 reject_1)))))))))
   
+  lemma Strcspn_exists
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 94 7 251#
+  "expl:Lemma strcspn_exists" :
+  (forall charP_charM_reject_6_at_L : (memory voidP Int8.t).
+   (forall charP_charM_s_13_5_at_L : (memory voidP Int8.t).
+    (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 94 7 251#
+    (forall p : (pointer voidP).
+     (forall t : (pointer voidP).
+      (forall s_16 : (pointer voidP).
+       (forall reject_2 : (pointer voidP).
+        ((((<=) (sub_pointer s_16 p) (0)) /\
+         (((<)
+          (sub_pointer p
+          (shift s_16 (Uint64.to_int (strlen s_16 charP_charM_s_13_5_at_L))))
+          (0))
+         /\
+         (((<=) (sub_pointer reject_2 t) (0)) /\
+         (((<)
+          (sub_pointer t
+          (shift reject_2
+          (Uint64.to_int (strlen reject_2 charP_charM_reject_6_at_L)))) (0))
+         /\
+         (Int8.(=) (select charP_charM_s_13_5_at_L p)
+         (select charP_charM_reject_6_at_L t)))))) ->
+         (exists t_0 : (pointer voidP).
+          (((<=) (sub_pointer reject_2 t_0) (0)) /\
+          (((<)
+           (sub_pointer t_0
+           (shift reject_2
+           (Uint64.to_int (strlen reject_2 charP_charM_reject_6_at_L)))) (0))
+          /\
+          (Int8.(=)
+          (select charP_charM_s_13_5_at_L
+          (shift s_16 (Uint64.to_int (strcspn s_16 reject_2))))
+          (select charP_charM_reject_6_at_L t_0)))))))))))))
+  
   lemma Strcspn_all_chars
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 93 8 246#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 100 8 246#
   "expl:Lemma strcspn_all_chars" :
   (forall voidP_reject_6_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_s_13_5_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_reject_6_at_L : (memory voidP Int8.t).
      (forall charP_charM_s_13_5_at_L : (memory voidP Int8.t).
-      (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 93 8 246#
-      (forall s_16 : (pointer voidP).
-       (forall reject_2 : (pointer voidP).
+      (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 100 8 246#
+      (forall s_17 : (pointer voidP).
+       (forall reject_3 : (pointer voidP).
         (forall sc_1 : (pointer voidP).
-         (((valid_str s_16 voidP_s_13_5_alloc_table_at_L
+         (((valid_str s_17 voidP_s_13_5_alloc_table_at_L
            charP_charM_s_13_5_at_L)
           /\
-          ((valid_str reject_2 voidP_reject_6_alloc_table_at_L
+          ((valid_str reject_3 voidP_reject_6_alloc_table_at_L
            charP_charM_reject_6_at_L)
           /\
-          (((<>) (Int8.to_int (select charP_charM_s_13_5_at_L s_16)) (0)) /\
-          (((<=) (sub_pointer s_16 sc_1) (0)) /\
+          (((<>) (Int8.to_int (select charP_charM_s_13_5_at_L s_17)) (0)) /\
+          (((<=) (sub_pointer s_17 sc_1) (0)) /\
           (((<)
            (sub_pointer sc_1
-           (shift s_16 (Uint64.to_int (strlen s_16 charP_charM_s_13_5_at_L))))
+           (shift s_17 (Uint64.to_int (strlen s_17 charP_charM_s_13_5_at_L))))
            (0))
           /\
           (forall r : (pointer voidP).
-           ((((<=) (sub_pointer reject_2 r) (0)) /\
+           ((((<=) (sub_pointer reject_3 r) (0)) /\
             ((<)
             (sub_pointer r
-            (shift reject_2
-            (Uint64.to_int (strlen reject_2 charP_charM_reject_6_at_L))))
+            (shift reject_3
+            (Uint64.to_int (strlen reject_3 charP_charM_reject_6_at_L))))
             (0))) ->
             (Int8.(<>) (select charP_charM_reject_6_at_L r)
             (select charP_charM_s_13_5_at_L sc_1))))))))) ->
-          (Uint64.(=) (strcspn s_16 reject_2)
-          (strlen s_16 charP_charM_s_13_5_at_L)))))))))))
+          (Uint64.(=) (strcspn s_17 reject_3)
+          (strlen s_17 charP_charM_s_13_5_at_L)))))))))))
   
   lemma Strcspn_zero_s
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 99 8 125#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 106 8 125#
   "expl:Lemma strcspn_zero_s" :
   (forall voidP_reject_6_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_s_13_5_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_reject_6_at_L : (memory voidP Int8.t).
      (forall charP_charM_s_13_5_at_L : (memory voidP Int8.t).
-      (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 99 8 125#
-      (forall s_17 : (pointer voidP).
-       (forall reject_3 : (pointer voidP).
-        (((valid_str s_17 voidP_s_13_5_alloc_table_at_L
-          charP_charM_s_13_5_at_L)
-         /\
-         ((valid_str reject_3 voidP_reject_6_alloc_table_at_L
-          charP_charM_reject_6_at_L)
-         /\ ((=) (Uint64.to_int (strlen s_17 charP_charM_s_13_5_at_L)) (0))))
-         -> ((=) (Uint64.to_int (strcspn s_17 reject_3)) (0))))))))))
-  
-  lemma Strcspn_zero_reject
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 104 4 132#
-  "expl:Lemma strcspn_zero_reject" :
-  (forall voidP_reject_6_alloc_table_at_L : (alloc_table voidP).
-   (forall voidP_s_13_5_alloc_table_at_L : (alloc_table voidP).
-    (forall charP_charM_reject_6_at_L : (memory voidP Int8.t).
-     (forall charP_charM_s_13_5_at_L : (memory voidP Int8.t).
-      (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 104 4 132#
+      (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 106 8 125#
       (forall s_18 : (pointer voidP).
        (forall reject_4 : (pointer voidP).
         (((valid_str s_18 voidP_s_13_5_alloc_table_at_L
@@ -2048,41 +2066,59 @@ theory Axiomatic_Strcspn
          /\
          ((valid_str reject_4 voidP_reject_6_alloc_table_at_L
           charP_charM_reject_6_at_L)
+         /\ ((=) (Uint64.to_int (strlen s_18 charP_charM_s_13_5_at_L)) (0))))
+         -> ((=) (Uint64.to_int (strcspn s_18 reject_4)) (0))))))))))
+  
+  lemma Strcspn_zero_reject
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 111 4 132#
+  "expl:Lemma strcspn_zero_reject" :
+  (forall voidP_reject_6_alloc_table_at_L : (alloc_table voidP).
+   (forall voidP_s_13_5_alloc_table_at_L : (alloc_table voidP).
+    (forall charP_charM_reject_6_at_L : (memory voidP Int8.t).
+     (forall charP_charM_s_13_5_at_L : (memory voidP Int8.t).
+      (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 111 4 132#
+      (forall s_19 : (pointer voidP).
+       (forall reject_5 : (pointer voidP).
+        (((valid_str s_19 voidP_s_13_5_alloc_table_at_L
+          charP_charM_s_13_5_at_L)
          /\
-         ((=) (Uint64.to_int (strlen reject_4 charP_charM_reject_6_at_L))
+         ((valid_str reject_5 voidP_reject_6_alloc_table_at_L
+          charP_charM_reject_6_at_L)
+         /\
+         ((=) (Uint64.to_int (strlen reject_5 charP_charM_reject_6_at_L))
          (0)))) ->
-         (Uint64.(=) (strcspn s_18 reject_4)
-         (strlen s_18 charP_charM_s_13_5_at_L))))))))))
+         (Uint64.(=) (strcspn s_19 reject_5)
+         (strlen s_19 charP_charM_s_13_5_at_L))))))))))
   
   lemma Strspn_at_null
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 109 7 78#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 116 7 78#
   "expl:Lemma strspn_at_null" :
   (forall charP_charM_s_13_5_at_L : (memory voidP Int8.t).
-   (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 109 7 78#
-   (forall s_19 : (pointer voidP).
-    (forall reject_5 : (pointer voidP).
-     (((=) (Int8.to_int (select charP_charM_s_13_5_at_L s_19)) (0)) ->
-      ((=) (Uint64.to_int (strcspn s_19 reject_5)) (0)))))))
+   (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 116 7 78#
+   (forall s_20 : (pointer voidP).
+    (forall reject_6 : (pointer voidP).
+     (((=) (Int8.to_int (select charP_charM_s_13_5_at_L s_20)) (0)) ->
+      ((=) (Uint64.to_int (strcspn s_20 reject_6)) (0)))))))
   
   lemma Strcspn_less
-  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 113 5 126#
+  #"/Users/anastasia/Downloads/strcspn/./strcspn.h" 120 5 126#
   "expl:Lemma strcspn_less" :
   (forall voidP_reject_6_alloc_table_at_L : (alloc_table voidP).
    (forall voidP_s_13_5_alloc_table_at_L : (alloc_table voidP).
     (forall charP_charM_reject_6_at_L : (memory voidP Int8.t).
      (forall charP_charM_s_13_5_at_L : (memory voidP Int8.t).
-      (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 113 5 126#
-      (forall s_20 : (pointer voidP).
-       (forall reject_6 : (pointer voidP).
-        (((valid_str s_20 voidP_s_13_5_alloc_table_at_L
+      (#"/Users/anastasia/Downloads/strcspn/./strcspn.h" 120 5 126#
+      (forall s_21 : (pointer voidP).
+       (forall reject_7 : (pointer voidP).
+        (((valid_str s_21 voidP_s_13_5_alloc_table_at_L
           charP_charM_s_13_5_at_L)
          /\
-         ((valid_str reject_6 voidP_reject_6_alloc_table_at_L
+         ((valid_str reject_7 voidP_reject_6_alloc_table_at_L
           charP_charM_reject_6_at_L)
-         /\ ((<>) (Int8.to_int (select charP_charM_s_13_5_at_L s_20)) (0))))
+         /\ ((<>) (Int8.to_int (select charP_charM_s_13_5_at_L s_21)) (0))))
          ->
-         (Uint64.(<=) (strcspn s_20 reject_6)
-         (strlen s_20 charP_charM_s_13_5_at_L))))))))))
+         (Uint64.(<=) (strcspn s_21 reject_7)
+         (strlen s_21 charP_charM_s_13_5_at_L))))))))))
   
 end
 
@@ -2183,7 +2219,7 @@ module Function_strcspn_0_safety
        ((<) i (offset_max voidP_s_7_alloc_table s_0))) ->
        ((=) (typeof voidP_s_7_tag_table (shift s_0 i)) charP_tag)))))
    /\
-   (#"strcspn.jc" 199 12 90#
+   (#"strcspn.jc" 218 12 90#
    ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 3 10 22#
     (valid_str s_0 voidP_s_7_alloc_table charP_charM_s_7))
    /\
@@ -2194,7 +2230,7 @@ module Function_strcspn_0_safety
    (let return = ref (Safe_uint64.any_  () ) in
    try
     begin
-    (let p_0 = ref (any_pointer  () : (pointer voidP)) in
+    (let p_1 = ref (any_pointer  () : (pointer voidP)) in
     (let r_0 = ref (any_pointer  () : (pointer voidP)) in
     (let count = ref (Safe_uint64.any_  () ) in
     (let __retres = ref (Safe_uint64.any_  () ) in
@@ -2204,14 +2240,14 @@ module Function_strcspn_0_safety
       begin
       (count :=
        (let _jessie_23 =
-       (#"strcspn.jc" 229 24 37# "expl:Integer cast"
+       (#"strcspn.jc" 248 24 37# "expl:Integer cast"
        (Safe_uint64.of_int (0))) in
        begin
        (assert {
        (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 17 1 7#
        "expl:Pointer index bounds" true) }); _jessie_23 end));
        begin
-       (p_0 :=
+       (p_1 :=
         (let _jessie_17 = s_0 in
         begin
         (assert {
@@ -2219,31 +2255,31 @@ module Function_strcspn_0_safety
         "expl:Pointer index bounds" true) }); _jessie_17 end));
         'Loop_3:
         loop
-        invariant { (#"strcspn.jc" 232 6 4163# true) }
+        invariant { (#"strcspn.jc" 251 6 4212# true) }
           variant {
             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 27 19 38#
             (Int.(-) (Uint64.to_int (strlen s_0 charP_charM_s_7))
-            (sub_pointer !p_0 s_0))) }
+            (sub_pointer !p_1 s_0))) }
          begin
          any unit
          requires { true } reads { reject_0, s_0 }
          ensures {
            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 24 18 103#
             (forall z : (pointer voidP).
-             (forall t_0 : (pointer voidP).
+             (forall t_2 : (pointer voidP).
               ((((<=) (sub_pointer s_0 z) (0)) /\
-               (((<) (sub_pointer z !p_0) (0)) /\
-               (((<=) (sub_pointer reject_0 t_0) (0)) /\
+               (((<) (sub_pointer z !p_1) (0)) /\
+               (((<=) (sub_pointer reject_0 t_2) (0)) /\
                ((<)
-               (sub_pointer t_0
+               (sub_pointer t_2
                (shift reject_0
                (Uint64.to_int (strlen reject_0 charP_charM_reject_8)))) (0)))))
                ->
                (Int8.(<>) (select charP_charM_s_7 z)
-               (select charP_charM_reject_8 t_0))))))
+               (select charP_charM_reject_8 t_2))))))
            /\
            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 22 18 32#
-            ((=) (Uint64.to_int !count) (sub_pointer !p_0 s_0)))
+            ((=) (Uint64.to_int !count) (sub_pointer !p_1 s_0)))
            /\
            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 21 21 44#
             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 21 21 44#
@@ -2256,18 +2292,18 @@ module Function_strcspn_0_safety
            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 20 18 41#
             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 20 18 41#
             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 20 18 24#
-             ((<=) (sub_pointer s_0 !p_0) (0)))
+             ((<=) (sub_pointer s_0 !p_1) (0)))
             /\
             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 20 23 41#
             ((<=)
-            (sub_pointer !p_0
+            (sub_pointer !p_1
             (shift s_0 (Uint64.to_int (strlen s_0 charP_charM_s_7)))) (0))))))
            /\
            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 19 20 32#
-            (valid_str !p_0 voidP_s_7_alloc_table charP_charM_s_7))
+            (valid_str !p_1 voidP_s_7_alloc_table charP_charM_s_7))
            /\
            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 18 16 46#
-           (same_block s_0 !p_0))))))) } ;
+           (same_block s_0 !p_1))))))) } ;
           try
            begin
            begin
@@ -2279,8 +2315,8 @@ module Function_strcspn_0_safety
             (Safe_int32_of_Safe_int8.cast 
              (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 29 13 15#
              "expl:Pointer dereference"
-             (acc  voidP_s_7_alloc_table charP_charM_s_7 !p_0 )) ))
-            (#"strcspn.jc" 261 27 39# "expl:Integer cast"
+             (acc  voidP_s_7_alloc_table charP_charM_s_7 !p_1 )) ))
+            (#"strcspn.jc" 280 27 39# "expl:Integer cast"
             (Safe_int32.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
             try
@@ -2293,7 +2329,7 @@ module Function_strcspn_0_safety
               "expl:Pointer index bounds" true) }); _jessie_18 end));
               'Loop_4:
               loop
-              invariant { (#"strcspn.jc" 266 15 2062# true) }
+              invariant { (#"strcspn.jc" 285 15 2111# true) }
                 variant {
                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 35 21 50#
                   (Int.(-)
@@ -2304,11 +2340,11 @@ module Function_strcspn_0_safety
                requires { true } reads { reject_0 }
                ensures {
                  ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 34 19 64#
-                  (forall t : (pointer voidP).
-                   ((((<=) (sub_pointer reject_0 t) (0)) /\
-                    ((<) (sub_pointer t !r_0) (0))) ->
-                    (Int8.(<>) (select charP_charM_s_7 !p_0)
-                    (select charP_charM_reject_8 t)))))
+                  (forall t_1 : (pointer voidP).
+                   ((((<=) (sub_pointer reject_0 t_1) (0)) /\
+                    ((<) (sub_pointer t_1 !r_0) (0))) ->
+                    (Int8.(<>) (select charP_charM_s_7 !p_1)
+                    (select charP_charM_reject_8 t_1)))))
                  /\
                  ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 32 19 57#
                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 32 19 57#
@@ -2341,7 +2377,7 @@ module Function_strcspn_0_safety
                    "expl:Pointer dereference"
                    (acc  voidP_reject_8_alloc_table charP_charM_reject_8 !r_0
                     )) ))
-                  (#"strcspn.jc" 286 36 48# "expl:Integer cast"
+                  (#"strcspn.jc" 306 36 48# "expl:Integer cast"
                   (Safe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -2352,7 +2388,7 @@ module Function_strcspn_0_safety
                    (Safe_int32_of_Safe_int8.cast 
                     (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 38 7 9#
                     "expl:Pointer dereference"
-                    (acc  voidP_s_7_alloc_table charP_charM_s_7 !p_0 )) ))
+                    (acc  voidP_s_7_alloc_table charP_charM_s_7 !p_1 )) ))
                    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 38 13 15#
                    "expl:Integer cast"
                    (Safe_int32_of_Safe_int8.cast 
@@ -2367,7 +2403,7 @@ module Function_strcspn_0_safety
                    requires { true }
                    ensures {
                      (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 39 8 16#
-                     (Int8.(=) (select charP_charM_s_7 !p_0)
+                     (Int8.(=) (select charP_charM_s_7 !p_1)
                      (select charP_charM_reject_8 !r_0))) } ; () end;
                     begin
                     (__retres :=
@@ -2381,7 +2417,7 @@ module Function_strcspn_0_safety
                    (let _jessie_20 =
                    (shift_typesafe  !r_0
                     (Safe_int32.to_int 
-                     (#"strcspn.jc" 305 49 61# "expl:Integer cast"
+                     (#"strcspn.jc" 325 49 61# "expl:Integer cast"
                      (Safe_int32.of_int (1))) ) ) in
                    begin
                    (assert {
@@ -2402,7 +2438,7 @@ module Function_strcspn_0_safety
                (count :=
                 (let _jessie_21 =
                 (Safe_uint64.(+)  !count
-                 (#"strcspn.jc" 310 61 74# "expl:Integer cast"
+                 (#"strcspn.jc" 330 61 74# "expl:Integer cast"
                  (Safe_uint64.of_int (1))) ) in
                 begin
                 (assert {
@@ -2415,11 +2451,11 @@ module Function_strcspn_0_safety
                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 44 8 50#
                   ((=) (Int.(+) (Uint64.to_int (at !count 'Before)) (1))
                   (Uint64.to_int !count))) } ; () end end end end end;
-            (p_0 :=
+            (p_1 :=
              (let _jessie_22 =
-             (shift_typesafe  !p_0
+             (shift_typesafe  !p_1
               (Safe_int32.to_int 
-               (#"strcspn.jc" 319 40 52# "expl:Integer cast"
+               (#"strcspn.jc" 339 40 52# "expl:Integer cast"
                (Safe_int32.of_int (1))) ) ) in
              begin
              (assert {
@@ -2445,7 +2481,7 @@ module Function_strcspn_0_safety
      (return :=
       (let _jessie_25 = !__retres in
       begin
-      (assert { (#"strcspn.jc" 325 7 22# "expl:Pointer index bounds" true) });
+      (assert { (#"strcspn.jc" 345 7 22# "expl:Pointer index bounds" true) });
        _jessie_25 end)); (raise Return) end end)))); absurd  end with Return
     -> !return end)
   
@@ -2535,7 +2571,7 @@ module Function_strcspn_0_behaviors
        ((<) i (offset_max voidP_s_7_alloc_table s_0))) ->
        ((=) (typeof voidP_s_7_tag_table (shift s_0 i)) charP_tag)))))
    /\
-   (#"strcspn.jc" 199 12 90#
+   (#"strcspn.jc" 218 12 90#
    ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 3 10 22#
     (valid_str s_0 voidP_s_7_alloc_table charP_charM_s_7))
    /\
@@ -2561,17 +2597,17 @@ module Function_strcspn_0_behaviors
      "expl:Ensures clause"
      ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 7 10 141#
       "expl:Ensures clause"
-      (forall p : (pointer voidP).
-       (forall t_1 : (pointer voidP).
-        ((((<=) (sub_pointer s_0 p) (0)) /\
-         (((<) (sub_pointer p (shift s_0 (Uint64.to_int result))) (0)) /\
-         (((<=) (sub_pointer reject_0 t_1) (0)) /\
+      (forall p_0 : (pointer voidP).
+       (forall t_3 : (pointer voidP).
+        ((((<=) (sub_pointer s_0 p_0) (0)) /\
+         (((<) (sub_pointer p_0 (shift s_0 (Uint64.to_int result))) (0)) /\
+         (((<=) (sub_pointer reject_0 t_3) (0)) /\
          ((<)
-         (sub_pointer t_1
+         (sub_pointer t_3
          (shift reject_0
          (Uint64.to_int (strlen reject_0 charP_charM_reject_8)))) (0))))) ->
-         (Int8.(<>) (select charP_charM_s_7 p)
-         (select charP_charM_reject_8 t_1))))))
+         (Int8.(<>) (select charP_charM_s_7 p_0)
+         (select charP_charM_reject_8 t_3))))))
      /\
      (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 11 11 40#
      "expl:Ensures clause" (Uint64.(=) result (strcspn s_0 reject_0)))))))))))
@@ -2580,7 +2616,7 @@ module Function_strcspn_0_behaviors
    (let return = ref (Unsafe_uint64.any_  () ) in
    try
     begin
-    (let p_0 = ref (any_pointer  () : (pointer voidP)) in
+    (let p_1 = ref (any_pointer  () : (pointer voidP)) in
     (let r_0 = ref (any_pointer  () : (pointer voidP)) in
     (let count = ref (Unsafe_uint64.any_  () ) in
     (let __retres = ref (Unsafe_uint64.any_  () ) in
@@ -2589,27 +2625,27 @@ module Function_strcspn_0_behaviors
      try
       begin
       (count :=
-       (#"strcspn.jc" 229 24 37# "expl:Integer cast"
+       (#"strcspn.jc" 248 24 37# "expl:Integer cast"
        (Unsafe_uint64.of_int (0))));
        begin
-       (p_0 := s_0);
+       (p_1 := s_0);
         'Loop_1:
         loop
         invariant
           { ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 18 16 46#
-             (same_block s_0 !p_0))
+             (same_block s_0 !p_1))
             &&
             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 19 20 32#
-             (valid_str !p_0 voidP_s_7_alloc_table charP_charM_s_7))
+             (valid_str !p_1 voidP_s_7_alloc_table charP_charM_s_7))
             &&
             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 20 18 41#
              (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 20 18 41#
              ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 20 18 24#
-              ((<=) (sub_pointer s_0 !p_0) (0)))
+              ((<=) (sub_pointer s_0 !p_1) (0)))
              /\
              (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 20 23 41#
              ((<=)
-             (sub_pointer !p_0
+             (sub_pointer !p_1
              (shift s_0 (Uint64.to_int (strlen s_0 charP_charM_s_7)))) (0))))))
             &&
             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 21 21 44#
@@ -2621,21 +2657,21 @@ module Function_strcspn_0_behaviors
              (Uint64.(<=) !count (strlen s_0 charP_charM_s_7))))))
             &&
             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 22 18 32#
-             ((=) (Uint64.to_int !count) (sub_pointer !p_0 s_0)))
+             ((=) (Uint64.to_int !count) (sub_pointer !p_1 s_0)))
             &&
             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 24 18 103#
             (forall z : (pointer voidP).
-             (forall t_0 : (pointer voidP).
+             (forall t_2 : (pointer voidP).
               ((((<=) (sub_pointer s_0 z) (0)) /\
-               (((<) (sub_pointer z !p_0) (0)) /\
-               (((<=) (sub_pointer reject_0 t_0) (0)) /\
+               (((<) (sub_pointer z !p_1) (0)) /\
+               (((<=) (sub_pointer reject_0 t_2) (0)) /\
                ((<)
-               (sub_pointer t_0
+               (sub_pointer t_2
                (shift reject_0
                (Uint64.to_int (strlen reject_0 charP_charM_reject_8)))) (0)))))
                ->
                (Int8.(<>) (select charP_charM_s_7 z)
-               (select charP_charM_reject_8 t_0))))))))))) } 
+               (select charP_charM_reject_8 t_2))))))))))) } 
          begin
          any unit requires { true } ensures { true } ;
           try
@@ -2646,8 +2682,8 @@ module Function_strcspn_0_behaviors
            (Unsafe_int32.(<>) 
             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 29 13 15#
             "expl:Integer cast"
-            (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_s_7 !p_0 ) ))
-            (#"strcspn.jc" 261 27 39# "expl:Integer cast"
+            (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_s_7 !p_1 ) ))
+            (#"strcspn.jc" 280 27 39# "expl:Integer cast"
             (Unsafe_int32.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
             try
@@ -2676,11 +2712,11 @@ module Function_strcspn_0_behaviors
                    (0))))))
                   &&
                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 34 19 64#
-                  (forall t : (pointer voidP).
-                   ((((<=) (sub_pointer reject_0 t) (0)) /\
-                    ((<) (sub_pointer t !r_0) (0))) ->
-                    (Int8.(<>) (select charP_charM_s_7 !p_0)
-                    (select charP_charM_reject_8 t)))))))) } 
+                  (forall t_1 : (pointer voidP).
+                   ((((<=) (sub_pointer reject_0 t_1) (0)) /\
+                    ((<) (sub_pointer t_1 !r_0) (0))) ->
+                    (Int8.(<>) (select charP_charM_s_7 !p_1)
+                    (select charP_charM_reject_8 t_1)))))))) } 
                begin
                any unit requires { true } ensures { true } ;
                 try
@@ -2693,7 +2729,7 @@ module Function_strcspn_0_behaviors
                   "expl:Integer cast"
                   (Unsafe_int32_of_Unsafe_int8.cast 
                    (acc  charP_charM_reject_8 !r_0 ) ))
-                  (#"strcspn.jc" 286 36 48# "expl:Integer cast"
+                  (#"strcspn.jc" 306 36 48# "expl:Integer cast"
                   (Unsafe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -2702,7 +2738,7 @@ module Function_strcspn_0_behaviors
                    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 38 7 9#
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
-                    (acc  charP_charM_s_7 !p_0 ) ))
+                    (acc  charP_charM_s_7 !p_1 ) ))
                    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 38 13 15#
                    "expl:Integer cast"
                    (Unsafe_int32_of_Unsafe_int8.cast 
@@ -2713,14 +2749,14 @@ module Function_strcspn_0_behaviors
                    (assert {
                    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 39 8 16#
                    "expl:Assertion in line 39"
-                   (Int8.(=) (select charP_charM_s_7 !p_0)
+                   (Int8.(=) (select charP_charM_s_7 !p_1)
                    (select charP_charM_reject_8 !r_0))) }); () end;
                     begin (__retres := !count); (raise (Return_label_exc ()))
                     end end else ());
                   (r_0 :=
                    (shift_  !r_0
                     (Unsafe_int32.to_int 
-                     (#"strcspn.jc" 305 49 61# "expl:Integer cast"
+                     (#"strcspn.jc" 325 49 61# "expl:Integer cast"
                      (Unsafe_int32.of_int (1))) ) )) end;
                   (raise (Loop_continue_exc ())) end with Loop_continue_exc
                  _jessie_5 -> () end end end;
@@ -2736,7 +2772,7 @@ module Function_strcspn_0_behaviors
                begin
                (count :=
                 (Unsafe_uint64.(+)  !count
-                 (#"strcspn.jc" 310 61 74# "expl:Integer cast"
+                 (#"strcspn.jc" 330 61 74# "expl:Integer cast"
                  (Unsafe_uint64.of_int (1))) ));
                 begin
                 (assert {
@@ -2744,10 +2780,10 @@ module Function_strcspn_0_behaviors
                 "expl:Assertion in line 44"
                 ((=) (Int.(+) (Uint64.to_int (at !count 'Before)) (1))
                 (Uint64.to_int !count))) }); () end end end end end;
-            (p_0 :=
-             (shift_  !p_0
+            (p_1 :=
+             (shift_  !p_1
               (Unsafe_int32.to_int 
-               (#"strcspn.jc" 319 40 52# "expl:Integer cast"
+               (#"strcspn.jc" 339 40 52# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
@@ -8384,19 +8420,20 @@ module Function_strcspn_0
             "expl:Ensures clause"
             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 7 10 141#
              "expl:Ensures clause"
-             (forall p : (pointer voidP).
-              (forall t_1 : (pointer voidP).
-               ((((<=) (sub_pointer s_0 p) (0)) /\
-                (((<) (sub_pointer p (shift s_0 (Uint64.to_int result))) (0))
+             (forall p_0 : (pointer voidP).
+              (forall t_3 : (pointer voidP).
+               ((((<=) (sub_pointer s_0 p_0) (0)) /\
+                (((<) (sub_pointer p_0 (shift s_0 (Uint64.to_int result)))
+                 (0))
                 /\
-                (((<=) (sub_pointer reject_0 t_1) (0)) /\
+                (((<=) (sub_pointer reject_0 t_3) (0)) /\
                 ((<)
-                (sub_pointer t_1
+                (sub_pointer t_3
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_8)))) (0)))))
                 ->
-                (Int8.(<>) (select charP_charM_s_7 p)
-                (select charP_charM_reject_8 t_1))))))
+                (Int8.(<>) (select charP_charM_s_7 p_0)
+                (select charP_charM_reject_8 t_3))))))
             /\
             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 11 11 40#
             "expl:Ensures clause" (Uint64.(=) result (strcspn s_0 reject_0))))))))))
@@ -8439,7 +8476,7 @@ module Function_strcspn_0_safe
          (charP_charM_s_7 : (memory voidP Int8.t)) : Uint64.t
           requires {
             ("expl:Internal"
-            (#"strcspn.jc" 199 12 90# "expl:Requires clause"
+            (#"strcspn.jc" 218 12 90# "expl:Requires clause"
             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 3 10 22#
              "expl:Requires clause"
              (valid_str s_0 voidP_s_7_alloc_table charP_charM_s_7))
@@ -8466,19 +8503,20 @@ module Function_strcspn_0_safe
             "expl:Ensures clause"
             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 7 10 141#
              "expl:Ensures clause"
-             (forall p : (pointer voidP).
-              (forall t_1 : (pointer voidP).
-               ((((<=) (sub_pointer s_0 p) (0)) /\
-                (((<) (sub_pointer p (shift s_0 (Uint64.to_int result))) (0))
+             (forall p_0 : (pointer voidP).
+              (forall t_3 : (pointer voidP).
+               ((((<=) (sub_pointer s_0 p_0) (0)) /\
+                (((<) (sub_pointer p_0 (shift s_0 (Uint64.to_int result)))
+                 (0))
                 /\
-                (((<=) (sub_pointer reject_0 t_1) (0)) /\
+                (((<=) (sub_pointer reject_0 t_3) (0)) /\
                 ((<)
-                (sub_pointer t_1
+                (sub_pointer t_3
                 (shift reject_0
                 (Uint64.to_int (strlen reject_0 charP_charM_reject_8)))) (0)))))
                 ->
-                (Int8.(<>) (select charP_charM_s_7 p)
-                (select charP_charM_reject_8 t_1))))))
+                (Int8.(<>) (select charP_charM_s_7 p_0)
+                (select charP_charM_reject_8 t_3))))))
             /\
             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 11 11 40#
             "expl:Ensures clause" (Uint64.(=) result (strcspn s_0 reject_0))))))))))

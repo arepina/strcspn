@@ -36,12 +36,9 @@ size_t strcspn(const char *s, const char *reject)
     */
 		for (r = reject; *r != '\0'; ++r) {
 			if (*p == *r)
-        //@ assert *p == *r;
 				return count;
 		}
-		//@ghost Before:
 		++count;
-		 //@ assert \at(count + 1, Before) == \at(count, Here);
 	}
 	return count;
 }

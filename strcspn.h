@@ -8,6 +8,7 @@ typedef __kernel_ulong_t __kernel_size_t;
 typedef __kernel_size_t size_t;
 
 
+
 /*@ axiomatic Strlen {
     predicate valid_str(char *s) =
        \exists size_t n;
@@ -53,7 +54,7 @@ typedef __kernel_size_t size_t;
        s[n] == '\0' &&
        (\forall size_t i; i < n ==> s[i] != '\0') ==>
            strlen(s) == n;
-    
+
 
    logic boolean in_array(char *s, char val) = *s == '\0' ? \false : (*s == val ? \true : in_array(s+1, val));
 
@@ -88,6 +89,12 @@ typedef __kernel_size_t size_t;
  					\base_addr(s) == \base_addr(sc) &&
  					s <= sc < s + strlen(s)
  					==> strcspn(sc, reject) <= strcspn(s, reject);
+
+    lemma strcspn_exists:
+       \forall char *p, *t, *s, *reject;
+               s <= p < s + strlen(s) &&
+               reject <= t < reject + strlen(reject) &&
+               *p == *t ==> \exists char *t; reject <= t < reject + strlen(reject) && s[strcspn(s, reject)] == *t;
 
  		lemma strcspn_all_chars:
         \forall char* s, *reject, *sc;
