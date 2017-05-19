@@ -4,10 +4,7 @@
 		requires valid_str(reject);
 		assigns \nothing;
 		ensures 0 <= \result <= strlen(s);
-		ensures \forall char *p, *t;
-            s <= p < s + \result &&
-            reject <= t < reject + strlen(reject) ==>
-            *p != *t;
+		ensures \forall char *p, *t; s <= p < s + \result && reject <= t < reject + strlen(reject) ==> *p != *t;
 	  ensures \result == strcspn(s, reject);
  */
 size_t strcspn(const char *s, const char *reject)
