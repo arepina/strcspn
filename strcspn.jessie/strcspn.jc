@@ -315,10 +315,8 @@ behavior default:
                         {  
                            {  
                               (assert for default: (_C_48 : (jessie : 
-                                                            ((((r.charM :> integer) !=
-                                                                0) &&
-                                                               ((p.charM :> integer) !=
-                                                                 0)) ==>
+                                                            ((p.charM ==
+                                                               r.charM) ==>
                                                               (in_array{Here}(
                                                                 reject,
                                                                 p.charM) ==

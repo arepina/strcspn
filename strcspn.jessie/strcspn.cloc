@@ -38,7 +38,7 @@ end = 9
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
 line = 36
 begin = 8
-end = 57
+end = 41
 
 [_C_51]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
@@ -49,7 +49,7 @@ end = 15
 [strcspn_less]
 name = "Lemma strcspn_less"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 119
+line = 120
 begin = 3
 end = 150
 
@@ -123,7 +123,7 @@ end = 66
 
 [_C_19]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 120
+line = 121
 begin = 5
 end = 126
 
@@ -136,13 +136,13 @@ end = 57
 [in_array_at_null]
 name = "Lemma in_array_at_null"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 65
+line = 66
 begin = 3
 end = 123
 
 [_C_13]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 87
+line = 88
 begin = 5
 end = 197
 
@@ -160,7 +160,7 @@ end = 23
 
 [_C_12]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 82
+line = 83
 begin = 8
 end = 179
 
@@ -184,7 +184,7 @@ end = 35
 
 [_C_9]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 62
+line = 63
 begin = 5
 end = 129
 
@@ -276,7 +276,7 @@ end = 150
 
 [_C_17]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 111
+line = 112
 begin = 4
 end = 132
 
@@ -318,7 +318,7 @@ end = 51
 
 [_C_15]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 100
+line = 101
 begin = 8
 end = 246
 
@@ -344,13 +344,13 @@ end = 29
 [strcspn_shift]
 name = "Lemma strcspn_shift"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 81
+line = 82
 begin = 3
 end = 204
 
 [_C_10]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 66
+line = 67
 begin = 8
 end = 95
 
@@ -381,7 +381,7 @@ end = 57
 [strcspn_zero_reject]
 name = "Lemma strcspn_zero_reject"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 110
+line = 111
 begin = 3
 end = 163
 
@@ -394,21 +394,21 @@ end = 9
 [strcspn_zero_s]
 name = "Lemma strcspn_zero_s"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 105
+line = 106
 begin = 5
 end = 153
 
 [strcspn_all_chars]
 name = "Lemma strcspn_all_chars"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 99
+line = 100
 begin = 3
 end = 275
 
 [strcspn_exists]
 name = "Lemma strcspn_exists"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 93
+line = 94
 begin = 4
 end = 278
 
@@ -426,7 +426,7 @@ end = 22
 
 [_C_18]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 116
+line = 117
 begin = 7
 end = 78
 
@@ -445,7 +445,7 @@ end = 41
 
 [_C_14]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 94
+line = 95
 begin = 7
 end = 251
 
@@ -494,14 +494,14 @@ end = 35
 
 [_C_16]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 106
+line = 107
 begin = 8
 end = 125
 
 [in_array_shift1]
 name = "Lemma in_array_shift1"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 61
+line = 62
 begin = 3
 end = 156
 
@@ -533,13 +533,13 @@ end = 154
 [strcspn_pointers]
 name = "Lemma strcspn_pointers"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 86
+line = 87
 begin = 3
 end = 225
 
 [_C_11]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 70
+line = 71
 begin = 7
 end = 124
 
@@ -553,7 +553,7 @@ end = 98
 [in_array_shift2]
 name = "Lemma in_array_shift2"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 69
+line = 70
 begin = 3
 end = 151
 
@@ -566,7 +566,7 @@ end = 11
 [strspn_at_null]
 name = "Lemma strspn_at_null"
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
-line = 115
+line = 116
 begin = 3
 end = 104
 

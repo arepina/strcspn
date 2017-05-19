@@ -33,7 +33,7 @@ size_t strcspn(const char *s, const char *reject)
     */
 		for (r = reject; *r != '\0'; ++r) {
 			if (*p == *r)
-			  //@assert *r != '\0' && *p != '\0' ==> in_array(reject, *p);
+			  //@assert *p == *r ==> in_array(reject, *p);
 				return count;
 		}
 		//@assert *r != '\0' ==> !in_array(reject, *p);

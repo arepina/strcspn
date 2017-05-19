@@ -55,8 +55,8 @@ typedef __kernel_size_t size_t;
        (\forall size_t i; i < n ==> s[i] != '\0') ==>
            strlen(s) == n;
 
-
-   logic boolean in_array(char *s, char val) = *s == '\0' ? \false : (*s == val ? \true : in_array(s+1, val));
+   logic boolean in_array(char *s, char val) =
+   *s == '\0' ? \false : (*s == val ? \true : in_array(s+1, val));
 
    lemma in_array_shift1:
      \forall char* s, val; valid_str(s) && *s != '\0' && *s != val && val != '\0' ==>
