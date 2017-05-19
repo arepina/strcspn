@@ -215,13 +215,13 @@ axiomatic Strcspn {
 }
 
 uint64 strcspn(charP[..] s, charP[..] reject)
-  requires ((_C_68 : valid_str{Here}(s)) &&
-             (_C_69 : valid_str{Here}(reject)));
+  requires ((_C_71 : valid_str{Here}(s)) &&
+             (_C_72 : valid_str{Here}(reject)));
 behavior default:
   assigns \nothing;
-  ensures (_C_61 : (((_C_63 : (0 <= (\result :> integer))) &&
-                      (_C_64 : (\result <= strlen{Here}(\at(s,Old))))) &&
-                     ((_C_66 : (\forall charP[..] p_0;
+  ensures (_C_64 : (((_C_66 : (0 <= (\result :> integer))) &&
+                      (_C_67 : (\result <= strlen{Here}(\at(s,Old))))) &&
+                     ((_C_69 : (\forall charP[..] p_0;
                                  (\forall charP[..] t_3;
                                    ((((((\at(s,Old) - p_0) <= 0) &&
                                         ((p_0 -
@@ -234,7 +234,7 @@ behavior default:
                                            (strlen{Here}(\at(reject,Old)) :> integer))) <
                                         0)) ==>
                                      (p_0.charM != t_3.charM))))) &&
-                       (_C_67 : (\result ==
+                       (_C_70 : (\result ==
                                   strcspn(\at(s,Old), \at(reject,Old)))))));
 {  
    (var charP[..] p);
@@ -250,21 +250,21 @@ behavior default:
       
       loop 
       behavior default:
-        invariant (_C_32 : (\base_block(s) == \base_block(p)));
+        invariant (_C_33 : (\base_block(s) == \base_block(p)));
       behavior default:
-        invariant (_C_31 : valid_str{Here}(p));
+        invariant (_C_32 : valid_str{Here}(p));
       behavior default:
-        invariant (_C_28 : ((_C_29 : ((s - p) <= 0)) &&
-                             (_C_30 : ((p -
+        invariant (_C_29 : ((_C_30 : ((s - p) <= 0)) &&
+                             (_C_31 : ((p -
                                          (s + (strlen{Here}(s) :> integer))) <=
                                         0))));
       behavior default:
-        invariant (_C_25 : ((_C_26 : (0 <= (count :> integer))) &&
-                             (_C_27 : (count <= strlen{Here}(s)))));
+        invariant (_C_26 : ((_C_27 : (0 <= (count :> integer))) &&
+                             (_C_28 : (count <= strlen{Here}(s)))));
       behavior default:
-        invariant (_C_24 : ((count :> integer) == (p - s)));
+        invariant (_C_25 : ((count :> integer) == (p - s)));
       behavior default:
-        invariant (_C_23 : (\forall charP[..] z;
+        invariant (_C_24 : (\forall charP[..] z;
                              (\forall charP[..] t_2;
                                ((((((s - z) <= 0) && ((z - p) < 0)) &&
                                    ((reject - t_2) <= 0)) &&
@@ -273,57 +273,86 @@ behavior default:
                                        (strlen{Here}(reject) :> integer))) <
                                     0)) ==>
                                  (z.charM != t_2.charM)))));
+      behavior default:
+        invariant (_C_23 : ((strcspn(s, reject) :> integer) ==
+                             ((strcspn(p, reject) :> integer) +
+                               (count :> integer))));
       variant (_C_22 : ((strlen{Here}(s) :> integer) - (p - s)));
       while (true)
       {  
-         {  (if (_C_35 : ((_C_34 : ((_C_33 : p.charM) :> int32)) !=
+         {  (if (_C_36 : ((_C_35 : ((_C_34 : p.charM) :> int32)) !=
                            (0 :> int32))) then () else 
             (goto while_0_break));
             
-            {  (_C_36 : (r = reject));
+            {  (_C_37 : (r = reject));
                
                loop 
                behavior default:
-                 invariant (_C_43 : (\base_block(reject) == \base_block(r)));
+                 invariant (_C_44 : (\base_block(reject) == \base_block(r)));
                behavior default:
-                 invariant (_C_42 : valid_str{Here}(r));
+                 invariant (_C_43 : valid_str{Here}(r));
                behavior default:
-                 invariant (_C_39 : ((_C_40 : ((reject - r) <= 0)) &&
-                                      (_C_41 : ((r -
+                 invariant (_C_40 : ((_C_41 : ((reject - r) <= 0)) &&
+                                      (_C_42 : ((r -
                                                   (reject +
                                                     (strlen{Here}(reject) :> integer))) <=
                                                  0))));
                behavior default:
-                 invariant (_C_38 : (\forall charP[..] t_1;
+                 invariant (_C_39 : (\forall charP[..] t_1;
                                       ((((reject - t_1) <= 0) &&
                                          ((t_1 - r) < 0)) ==>
                                         (p.charM != t_1.charM))));
-               variant (_C_37 : ((strlen{Here}(reject) :> integer) -
+               variant (_C_38 : ((strlen{Here}(reject) :> integer) -
                                   (r - reject)));
                while (true)
                {  
-                  {  (if (_C_46 : ((_C_45 : ((_C_44 : r.charM) :> int32)) !=
+                  {  (if (_C_47 : ((_C_46 : ((_C_45 : r.charM) :> int32)) !=
                                     (0 :> int32))) then () else 
                      (goto while_1_break));
                      
-                     {  (if (_C_52 : ((_C_51 : ((_C_50 : p.charM) :> int32)) ==
-                                       (_C_49 : ((_C_48 : r.charM) :> int32)))) then 
-                        {  (_C_47 : (__retres = count));
+                     {  (if (_C_54 : ((_C_53 : ((_C_52 : p.charM) :> int32)) ==
+                                       (_C_51 : ((_C_50 : r.charM) :> int32)))) then 
+                        {  
+                           {  
+                              (assert for default: (_C_48 : (jessie : 
+                                                            ((((r.charM :> integer) !=
+                                                                0) &&
+                                                               ((p.charM :> integer) !=
+                                                                 0)) ==>
+                                                              (in_array{Here}(
+                                                                reject,
+                                                                p.charM) ==
+                                                                true)))));
+                              ()
+                           };
                            
-                           (goto return_label)
+                           {  (_C_49 : (__retres = count));
+                              
+                              (goto return_label)
+                           }
                         } else ())
                      };
-                     (_C_54 : (r = (_C_53 : (r + (1 :> int32)))))
+                     (_C_56 : (r = (_C_55 : (r + (1 :> int32)))))
                   }
                };
                (while_1_break : ());
-               (_C_57 : (count = (_C_56 : ((_C_55 : (count + (1 :> uint64))) :> uint64))))
+               
+               {  
+                  (assert for default: (_C_57 : (jessie : (((r.charM :> integer) !=
+                                                             0) ==>
+                                                            (! (in_array{Here}(
+                                                                 reject,
+                                                                 p.charM) ==
+                                                                 true))))));
+                  ()
+               };
+               (_C_60 : (count = (_C_59 : ((_C_58 : (count + (1 :> uint64))) :> uint64))))
             };
-            (_C_59 : (p = (_C_58 : (p + (1 :> int32)))))
+            (_C_62 : (p = (_C_61 : (p + (1 :> int32)))))
          }
       };
       (while_0_break : ());
-      (_C_60 : (__retres = count));
+      (_C_63 : (__retres = count));
       (return_label : 
       (return __retres))
    }

@@ -2194,6 +2194,8 @@ module Function_strcspn_0_safety
   
   use import Axiomatic_Strlen 
   
+  use import Axiomatic_Strcspn 
+  
   use why3.Bool.Bool 
   
   let strcspn_0 #"/Users/anastasia/Downloads/strcspn/strcspn.c" 10 7 49#
@@ -2255,7 +2257,7 @@ module Function_strcspn_0_safety
         "expl:Pointer index bounds" true) }); _jessie_17 end));
         'Loop_3:
         loop
-        invariant { (#"strcspn.jc" 251 6 3444# true) }
+        invariant { (#"strcspn.jc" 251 6 5061# true) }
           variant {
             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 24 19 38#
             (Int.(-) (Uint64.to_int (strlen s_0 charP_charM_s_7))
@@ -2264,6 +2266,11 @@ module Function_strcspn_0_safety
          any unit
          requires { true } reads { reject_0, s_0 }
          ensures {
+           ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 22 18 66#
+            ((=) (Uint64.to_int (strcspn s_0 reject_0))
+            (Int.(+) (Uint64.to_int (strcspn !p_1 reject_0))
+            (Uint64.to_int !count))))
+           /\
            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 21 18 103#
             (forall z : (pointer voidP).
              (forall t_2 : (pointer voidP).
@@ -2303,7 +2310,7 @@ module Function_strcspn_0_safety
             (valid_str !p_1 voidP_s_7_alloc_table charP_charM_s_7))
            /\
            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 15 16 46#
-           (same_block s_0 !p_1))))))) } ;
+           (same_block s_0 !p_1)))))))) } ;
           try
            begin
            begin
@@ -2316,7 +2323,7 @@ module Function_strcspn_0_safety
              (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 26 13 15#
              "expl:Pointer dereference"
              (acc  voidP_s_7_alloc_table charP_charM_s_7 !p_1 )) ))
-            (#"strcspn.jc" 280 27 39# "expl:Integer cast"
+            (#"strcspn.jc" 284 27 39# "expl:Integer cast"
             (Safe_int32.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
             try
@@ -2329,7 +2336,7 @@ module Function_strcspn_0_safety
               "expl:Pointer index bounds" true) }); _jessie_18 end));
               'Loop_4:
               loop
-              invariant { (#"strcspn.jc" 285 15 1705# true) }
+              invariant { (#"strcspn.jc" 289 15 2584# true) }
                 variant {
                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 32 21 50#
                   (Int.(-)
@@ -2377,7 +2384,7 @@ module Function_strcspn_0_safety
                    "expl:Pointer dereference"
                    (acc  voidP_reject_8_alloc_table charP_charM_reject_8 !r_0
                     )) ))
-                  (#"strcspn.jc" 306 36 48# "expl:Integer cast"
+                  (#"strcspn.jc" 310 36 48# "expl:Integer cast"
                   (Safe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -2398,18 +2405,32 @@ module Function_strcspn_0_safety
                      !r_0 )) )) ))
                   then
                    begin
-                   (__retres :=
-                    (let _jessie_19 = !count in
+                   begin
+                   any unit
+                   requires { true } reads { reject_0 }
+                   ensures {
+                     (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 36 8 57#
+                     ((((<>) (Int8.to_int (select charP_charM_reject_8 !r_0))
+                       (0))
+                      /\
+                      ((<>) (Int8.to_int (select charP_charM_s_7 !p_1)) (0)))
+                      ->
+                      ((=)
+                      (in_array reject_0 (select charP_charM_s_7 !p_1)
+                      charP_charM_reject_8) true))) } ; () end;
                     begin
-                    (assert {
-                    (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 36 4 17#
-                    "expl:Pointer index bounds" true) }); _jessie_19 end));
-                    (raise (Return_label_exc ())) end else ());
+                    (__retres :=
+                     (let _jessie_19 = !count in
+                     begin
+                     (assert {
+                     (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 37 4 17#
+                     "expl:Pointer index bounds" true) }); _jessie_19 end));
+                     (raise (Return_label_exc ())) end end else ());
                   (r_0 :=
                    (let _jessie_20 =
                    (shift_typesafe  !r_0
                     (Safe_int32.to_int 
-                     (#"strcspn.jc" 316 49 61# "expl:Integer cast"
+                     (#"strcspn.jc" 335 49 61# "expl:Integer cast"
                      (Safe_int32.of_int (1))) ) ) in
                    begin
                    (assert {
@@ -2423,20 +2444,31 @@ module Function_strcspn_0_safety
              'While_1_break:
              begin
              ();
+              begin
+              any unit
+              requires { true } reads { reject_0 }
+              ensures {
+                (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 39 8 44#
+                (((<>) (Int8.to_int (select charP_charM_reject_8 !r_0)) (0))
+                 ->
+                 (not
+                 ((=)
+                 (in_array reject_0 (select charP_charM_s_7 !p_1)
+                 charP_charM_reject_8) true)))) } ; () end;
               (count :=
                (let _jessie_21 =
                (Safe_uint64.(+)  !count
-                (#"strcspn.jc" 320 61 74# "expl:Integer cast"
+                (#"strcspn.jc" 349 61 74# "expl:Integer cast"
                 (Safe_uint64.of_int (1))) ) in
                begin
                (assert {
-               (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 38 2 9#
+               (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 40 2 9#
                "expl:Pointer index bounds" true) }); _jessie_21 end)) end end;
             (p_1 :=
              (let _jessie_22 =
              (shift_typesafe  !p_1
               (Safe_int32.to_int 
-               (#"strcspn.jc" 322 40 52# "expl:Integer cast"
+               (#"strcspn.jc" 351 40 52# "expl:Integer cast"
                (Safe_int32.of_int (1))) ) ) in
              begin
              (assert {
@@ -2453,7 +2485,7 @@ module Function_strcspn_0_safety
         (let _jessie_24 = !count in
         begin
         (assert {
-        (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 40 1 14#
+        (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 42 1 14#
         "expl:Pointer index bounds" true) }); _jessie_24 end)) end end;
       (raise (Return_label_exc ())) end with Return_label_exc _jessie_3 ->
      'Return_label:
@@ -2462,7 +2494,7 @@ module Function_strcspn_0_safety
      (return :=
       (let _jessie_25 = !__retres in
       begin
-      (assert { (#"strcspn.jc" 328 7 22# "expl:Pointer index bounds" true) });
+      (assert { (#"strcspn.jc" 357 7 22# "expl:Pointer index bounds" true) });
        _jessie_25 end)); (raise Return) end end)))); absurd  end with Return
     -> !return end)
   
@@ -2640,19 +2672,24 @@ module Function_strcspn_0_behaviors
             ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 19 18 32#
              ((=) (Uint64.to_int !count) (sub_pointer !p_1 s_0)))
             &&
-            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 21 18 103#
-            (forall z : (pointer voidP).
-             (forall t_2 : (pointer voidP).
-              ((((<=) (sub_pointer s_0 z) (0)) /\
-               (((<) (sub_pointer z !p_1) (0)) /\
-               (((<=) (sub_pointer reject_0 t_2) (0)) /\
-               ((<)
-               (sub_pointer t_2
-               (shift reject_0
-               (Uint64.to_int (strlen reject_0 charP_charM_reject_8)))) (0)))))
-               ->
-               (Int8.(<>) (select charP_charM_s_7 z)
-               (select charP_charM_reject_8 t_2))))))))))) } 
+            ((#"/Users/anastasia/Downloads/strcspn/strcspn.c" 21 18 103#
+             (forall z : (pointer voidP).
+              (forall t_2 : (pointer voidP).
+               ((((<=) (sub_pointer s_0 z) (0)) /\
+                (((<) (sub_pointer z !p_1) (0)) /\
+                (((<=) (sub_pointer reject_0 t_2) (0)) /\
+                ((<)
+                (sub_pointer t_2
+                (shift reject_0
+                (Uint64.to_int (strlen reject_0 charP_charM_reject_8)))) (0)))))
+                ->
+                (Int8.(<>) (select charP_charM_s_7 z)
+                (select charP_charM_reject_8 t_2))))))
+            &&
+            (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 22 18 66#
+            ((=) (Uint64.to_int (strcspn s_0 reject_0))
+            (Int.(+) (Uint64.to_int (strcspn !p_1 reject_0))
+            (Uint64.to_int !count)))))))))) } 
          begin
          any unit requires { true } ensures { true } ;
           try
@@ -2664,7 +2701,7 @@ module Function_strcspn_0_behaviors
             (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 26 13 15#
             "expl:Integer cast"
             (Unsafe_int32_of_Unsafe_int8.cast  (acc  charP_charM_s_7 !p_1 ) ))
-            (#"strcspn.jc" 280 27 39# "expl:Integer cast"
+            (#"strcspn.jc" 284 27 39# "expl:Integer cast"
             (Unsafe_int32.of_int (0))) )) then ()
            else (raise (Goto_while_0_break_exc ())));
             try
@@ -2710,7 +2747,7 @@ module Function_strcspn_0_behaviors
                   "expl:Integer cast"
                   (Unsafe_int32_of_Unsafe_int8.cast 
                    (acc  charP_charM_reject_8 !r_0 ) ))
-                  (#"strcspn.jc" 306 36 48# "expl:Integer cast"
+                  (#"strcspn.jc" 310 36 48# "expl:Integer cast"
                   (Unsafe_int32.of_int (0))) )) then ()
                  else (raise (Goto_while_1_break_exc ())));
                   (if
@@ -2725,12 +2762,25 @@ module Function_strcspn_0_behaviors
                    (Unsafe_int32_of_Unsafe_int8.cast 
                     (acc  charP_charM_reject_8 !r_0 ) )) ))
                   then
-                   begin (__retres := !count); (raise (Return_label_exc ()))
-                   end else ());
+                   begin
+                   begin
+                   (assert {
+                   (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 36 8 57#
+                   "expl:Assertion in line 36"
+                   ((((<>) (Int8.to_int (select charP_charM_reject_8 !r_0))
+                     (0))
+                    /\
+                    ((<>) (Int8.to_int (select charP_charM_s_7 !p_1)) (0)))
+                    ->
+                    ((=)
+                    (in_array reject_0 (select charP_charM_s_7 !p_1)
+                    charP_charM_reject_8) true))) }); () end;
+                    begin (__retres := !count); (raise (Return_label_exc ()))
+                    end end else ());
                   (r_0 :=
                    (shift_  !r_0
                     (Unsafe_int32.to_int 
-                     (#"strcspn.jc" 316 49 61# "expl:Integer cast"
+                     (#"strcspn.jc" 335 49 61# "expl:Integer cast"
                      (Unsafe_int32.of_int (1))) ) )) end;
                   (raise (Loop_continue_exc ())) end with Loop_continue_exc
                  _jessie_5 -> () end end end;
@@ -2740,14 +2790,23 @@ module Function_strcspn_0_behaviors
              'While_1_break:
              begin
              ();
+              begin
+              (assert {
+              (#"/Users/anastasia/Downloads/strcspn/strcspn.c" 39 8 44#
+              "expl:Assertion in line 39"
+              (((<>) (Int8.to_int (select charP_charM_reject_8 !r_0)) (0)) ->
+               (not
+               ((=)
+               (in_array reject_0 (select charP_charM_s_7 !p_1)
+               charP_charM_reject_8) true)))) }); () end;
               (count :=
                (Unsafe_uint64.(+)  !count
-                (#"strcspn.jc" 320 61 74# "expl:Integer cast"
+                (#"strcspn.jc" 349 61 74# "expl:Integer cast"
                 (Unsafe_uint64.of_int (1))) )) end end;
             (p_1 :=
              (shift_  !p_1
               (Unsafe_int32.to_int 
-               (#"strcspn.jc" 322 40 52# "expl:Integer cast"
+               (#"strcspn.jc" 351 40 52# "expl:Integer cast"
                (Unsafe_int32.of_int (1))) ) )) end;
             (raise (Loop_continue_exc ())) end with Loop_continue_exc
            _jessie_7 -> () end end end; (raise (Goto_while_0_break_exc ()))
