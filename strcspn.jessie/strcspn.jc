@@ -196,23 +196,26 @@ axiomatic Strcspn {
 }
 
 uint64 strcspn(charP[..] s, charP[..] reject)
-  requires ((_C_65 : valid_str{Here}(s)) &&
-             (_C_66 : valid_str{Here}(reject)));
+  requires ((_C_69 : valid_str{Here}(s)) &&
+             (_C_70 : valid_str{Here}(reject)));
 behavior default:
   assigns \nothing;
-  ensures (_C_58 : (((_C_60 : (0 <= (\result :> integer))) &&
-                      (_C_61 : (\result <= strlen{Here}(\at(s,Old))))) &&
-                     ((_C_63 : (\forall charP[..] t_1;
-                                 (\forall integer i_6;
-                                   (((((0 <= i_6) &&
-                                        (i_6 < (\result :> integer))) &&
+  ensures (_C_62 : (((_C_64 : (0 <= (\result :> integer))) &&
+                      (_C_65 : (\result <= strlen{Here}(\at(s,Old))))) &&
+                     ((_C_67 : (\forall charP[..] p;
+                                 (\forall charP[..] t_1;
+                                   ((((((\at(s,Old) - p) <= 0) &&
+                                        ((p -
+                                           (\at(s,Old) +
+                                             (\result :> integer))) <
+                                          0)) &&
                                        ((\at(reject,Old) - t_1) <= 0)) &&
                                       ((t_1 -
                                          (\at(reject,Old) +
                                            (strlen{Here}(\at(reject,Old)) :> integer))) <
                                         0)) ==>
-                                     ((\at(s,Old) + i_6).charM != t_1.charM))))) &&
-                       (_C_64 : (\result ==
+                                     (p.charM != t_1.charM))))) &&
+                       (_C_68 : (\result ==
                                   strcspn(\at(s,Old), \at(reject,Old)))))));
 {  
    (var charP[..] p);
@@ -227,6 +230,10 @@ behavior default:
       (_C_20 : (p = s));
       
       loop 
+      behavior default:
+        invariant (_C_31 : (\base_block(s) == \base_block(p)));
+      behavior default:
+        invariant (_C_30 : valid_str{Here}(p));
       behavior default:
         invariant (_C_27 : ((_C_28 : ((s - p) <= 0)) &&
                              (_C_29 : ((p -
@@ -250,66 +257,70 @@ behavior default:
       variant (_C_21 : ((strlen{Here}(s) :> integer) - (p - s)));
       while (true)
       {  
-         {  (if (_C_32 : ((_C_31 : ((_C_30 : p.charM) :> int32)) !=
+         {  (if (_C_34 : ((_C_33 : ((_C_32 : p.charM) :> int32)) !=
                            (0 :> int32))) then () else 
             (goto while_0_break));
             
-            {  (_C_33 : (r = reject));
+            {  (_C_35 : (r = reject));
                
                loop 
                behavior default:
-                 invariant (_C_36 : ((_C_37 : ((reject - r) <= 0)) &&
-                                      (_C_38 : ((r -
+                 invariant (_C_42 : (\base_block(reject) == \base_block(r)));
+               behavior default:
+                 invariant (_C_41 : valid_str{Here}(r));
+               behavior default:
+                 invariant (_C_38 : ((_C_39 : ((reject - r) <= 0)) &&
+                                      (_C_40 : ((r -
                                                   (reject +
                                                     (strlen{Here}(reject) :> integer))) <=
                                                  0))));
                behavior default:
-                 invariant (_C_35 : (\forall charP[..] t;
+                 invariant (_C_37 : (\forall charP[..] t;
                                       ((((reject - t) <= 0) && ((t - r) < 0)) ==>
                                         (p.charM != t.charM))));
-               variant (_C_34 : ((strlen{Here}(reject) :> integer) -
+               variant (_C_36 : ((strlen{Here}(reject) :> integer) -
                                   (r - reject)));
                while (true)
                {  
-                  {  (if (_C_41 : ((_C_40 : ((_C_39 : r.charM) :> int32)) !=
+                  {  (if (_C_45 : ((_C_44 : ((_C_43 : r.charM) :> int32)) !=
                                     (0 :> int32))) then () else 
                      (goto while_1_break));
                      
-                     {  (if (_C_48 : ((_C_47 : ((_C_46 : p.charM) :> int32)) ==
-                                       (_C_45 : ((_C_44 : r.charM) :> int32)))) then 
+                     {  (if (_C_52 : ((_C_51 : ((_C_50 : p.charM) :> int32)) ==
+                                       (_C_49 : ((_C_48 : r.charM) :> int32)))) then 
                         {  
                            {  
-                              (assert for default: (_C_42 : (jessie : 
+                              (assert for default: (_C_46 : (jessie : 
                                                             (p.charM ==
                                                               r.charM))));
                               ()
                            };
                            
-                           {  (_C_43 : (__retres = count));
+                           {  (_C_47 : (__retres = count));
                               
                               (goto return_label)
                            }
                         } else ())
                      };
-                     (_C_50 : (r = (_C_49 : (r + (1 :> int32)))))
+                     (_C_54 : (r = (_C_53 : (r + (1 :> int32)))))
                   }
                };
                (while_1_break : ());
                (Before : ());
-               (_C_53 : (count = (_C_52 : ((_C_51 : (count + (1 :> uint64))) :> uint64))));
+               (_C_57 : (count = (_C_56 : ((_C_55 : (count + (1 :> uint64))) :> uint64))));
                
                {  
-                  (assert for default: (_C_54 : (jessie : (\at(((count :> integer) +
+                  (assert for default: (_C_58 : (jessie : (\at(((count :> integer) +
                                                                  1),Before) ==
                                                             (\at(count,Here) :> integer)))));
                   ()
                }
             };
-            (_C_56 : (p = (_C_55 : (p + (1 :> int32)))))
+            (_C_60 : (p = (_C_59 : (p + (1 :> int32)))))
          }
       };
       (while_0_break : ());
-      (_C_57 : (__retres = count));
+      (_C_61 : (__retres = count));
       (return_label : 
       (return __retres))
    }

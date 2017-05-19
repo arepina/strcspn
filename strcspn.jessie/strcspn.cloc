@@ -1,43 +1,43 @@
 [_C_52]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 40
-begin = 2
-end = 9
+line = 38
+begin = 7
+end = 15
 
 [_C_35]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 31
-begin = 19
-end = 64
+line = 37
+begin = 7
+end = 17
 
 [_C_56]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 26
-begin = 25
-end = 28
+line = 43
+begin = 2
+end = 9
 
 [_C_28]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 17
+line = 20
 begin = 18
 end = 24
 
 [_C_59]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 6
-begin = 10
-end = 35
+line = 29
+begin = 25
+end = 28
 
 [_C_48]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 35
-begin = 7
+line = 38
+begin = 13
 end = 15
 
 [_C_51]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 40
-begin = 2
+line = 38
+begin = 7
 end = 9
 
 [strcspn_less]
@@ -56,9 +56,9 @@ end = 281
 
 [_C_31]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 26
-begin = 13
-end = 15
+line = 18
+begin = 16
+end = 46
 
 [strlen_shift1]
 name = "Lemma strlen_shift1"
@@ -69,9 +69,9 @@ end = 129
 
 [_C_41]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 34
+line = 31
 begin = 19
-end = 29
+end = 31
 
 [_C_4]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
@@ -79,35 +79,47 @@ line = 29
 begin = 7
 end = 125
 
+[_C_70]
+file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
+line = 4
+begin = 11
+end = 28
+
 [_C_61]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 6
-begin = 15
-end = 35
+line = 46
+begin = 1
+end = 14
+
+[_C_69]
+file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
+line = 3
+begin = 10
+end = 22
 
 [_C_32]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 26
+line = 29
 begin = 13
-end = 23
+end = 15
 
 [_C_23]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 19
+line = 22
 begin = 18
 end = 32
 
 [_C_19]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 14
+line = 17
 begin = 1
 end = 7
 
 [_C_42]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 36
-begin = 8
-end = 16
+line = 30
+begin = 16
+end = 51
 
 [in_array_at_null]
 name = "Lemma in_array_at_null"
@@ -130,9 +142,9 @@ end = 126
 
 [_C_36]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 29
-begin = 19
-end = 57
+line = 35
+begin = 21
+end = 50
 
 [_C_12]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
@@ -142,21 +154,21 @@ end = 179
 
 [_C_33]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 34
-begin = 7
-end = 17
+line = 29
+begin = 13
+end = 15
 
 [_C_22]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 21
+line = 24
 begin = 18
 end = 103
 
 [_C_65]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 3
-begin = 10
-end = 22
+line = 6
+begin = 15
+end = 35
 
 [_C_9]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
@@ -167,26 +179,26 @@ end = 129
 [_C_57]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
 line = 43
-begin = 1
-end = 14
+begin = 2
+end = 9
 
 [_C_54]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 41
-begin = 8
-end = 50
+line = 37
+begin = 31
+end = 34
 
 [_C_30]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 26
-begin = 13
-end = 15
+line = 19
+begin = 20
+end = 32
 
 [_C_63]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 7
-begin = 11
-end = 111
+line = 6
+begin = 10
+end = 35
 
 [_C_6]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
@@ -196,45 +208,45 @@ end = 103
 
 [_C_64]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 8
-begin = 11
-end = 40
+line = 6
+begin = 10
+end = 22
 
 [strcspn]
 name = "Function strcspn"
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 10
+line = 13
 begin = 7
 end = 49
 
 [_C_49]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 34
-begin = 31
-end = 34
+line = 38
+begin = 13
+end = 15
 
 [_C_24]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 18
+line = 21
 begin = 21
 end = 44
 
 [_C_45]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 35
-begin = 13
-end = 15
+line = 37
+begin = 19
+end = 29
 
 [_C_20]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 26
+line = 29
 begin = 6
 end = 11
 
 [_C_38]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 29
-begin = 29
+line = 32
+begin = 19
 end = 57
 
 [_C_3]
@@ -270,27 +282,27 @@ end = 35
 
 [_C_55]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 26
-begin = 25
-end = 28
+line = 43
+begin = 2
+end = 9
 
 [_C_27]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 17
+line = 20
 begin = 18
 end = 41
 
 [_C_46]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 35
-begin = 7
-end = 9
+line = 39
+begin = 8
+end = 16
 
 [_C_44]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 35
-begin = 13
-end = 15
+line = 37
+begin = 19
+end = 21
 
 [_C_15]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
@@ -300,7 +312,7 @@ end = 125
 
 [_C_26]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 18
+line = 21
 begin = 26
 end = 44
 
@@ -313,9 +325,9 @@ end = 137
 
 [_C_47]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 35
-begin = 7
-end = 9
+line = 40
+begin = 4
+end = 17
 
 [strcspn_shift]
 name = "Lemma strcspn_shift"
@@ -330,23 +342,29 @@ line = 65
 begin = 8
 end = 95
 
+[_C_68]
+file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
+line = 11
+begin = 11
+end = 40
+
 [_C_60]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 6
-begin = 10
-end = 22
+line = 29
+begin = 25
+end = 28
 
 [_C_53]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 40
-begin = 2
-end = 9
+line = 37
+begin = 31
+end = 34
 
 [_C_40]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 34
-begin = 19
-end = 21
+line = 32
+begin = 29
+end = 57
 
 [strcspn_zero_reject]
 name = "Lemma strcspn_zero_reject"
@@ -357,9 +375,9 @@ end = 163
 
 [_C_58]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 6
-begin = 10
-end = 35
+line = 44
+begin = 8
+end = 50
 
 [strcspn_zero_s]
 name = "Lemma strcspn_zero_s"
@@ -383,9 +401,9 @@ end = 159
 
 [_C_66]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 4
-begin = 11
-end = 28
+line = 6
+begin = 10
+end = 35
 
 [_C_18]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
@@ -402,7 +420,7 @@ end = 183
 
 [_C_29]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 17
+line = 20
 begin = 23
 end = 41
 
@@ -421,21 +439,21 @@ end = 112
 
 [_C_50]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 34
-begin = 31
-end = 34
+line = 38
+begin = 7
+end = 9
 
 [_C_37]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 29
+line = 34
 begin = 19
-end = 30
+end = 64
 
 [_C_43]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
 line = 37
-begin = 4
-end = 17
+begin = 19
+end = 21
 
 [_C_2]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
@@ -445,9 +463,15 @@ end = 106
 
 [_C_34]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 32
-begin = 21
-end = 50
+line = 29
+begin = 13
+end = 23
+
+[_C_67]
+file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
+line = 7
+begin = 10
+end = 141
 
 [_C_16]
 file = "/Users/anastasia/Downloads/strcspn/./strcspn.h"
@@ -470,15 +494,15 @@ end = 83
 
 [_C_25]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 18
+line = 21
 begin = 21
 end = 31
 
 [_C_39]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 34
+line = 32
 begin = 19
-end = 21
+end = 30
 
 [strlen_shift_ex]
 name = "Lemma strlen_shift_ex"
@@ -516,7 +540,7 @@ end = 151
 
 [_C_21]
 file = "/Users/anastasia/Downloads/strcspn/strcspn.c"
-line = 24
+line = 27
 begin = 19
 end = 38
 
